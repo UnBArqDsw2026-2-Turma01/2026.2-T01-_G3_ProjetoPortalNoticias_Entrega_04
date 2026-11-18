@@ -1,0 +1,67 @@
+site_name: Portal de Notícias Burburinho - Grupo 3
+site_url: https://unbarqdsw2026-2-turma01.github.io/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/
+repo_url: https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04
+repo_name: GitHub
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/SapoBurburinho.svg
+  favicon: assets/SapoBurburinho.svg
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Usar preferência do sistema
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para o modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para o modo claro
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - content.code.copy
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04
+
+nav:
+  - Apresentação: index.md
+  - Projetos: Projeto/Projeto.md
+  - 1. Desenho de Software (DAS ou Reutilização):
+      - 1. Desenho de Software: Base/1.DAS_Reutilizacao.md
+      - Relatórios:
+          - 1.1.1. DAS: Base/Relatórios/1.1.1.DAS.md
+          - 1.1.2. Reutilização: Base/Relatórios/1.1.2.Reutilizacao.md
+      - 1.2. Participações: Base/1.2.Participacoes.md
+      - 1.3. Iniciativas Extras: Base/1.3.IniciativasExtras.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_css:
+  - stylesheets/custom.css
