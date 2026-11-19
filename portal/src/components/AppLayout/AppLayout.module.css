@@ -1,0 +1,29 @@
+.layout {
+  display: grid;
+  grid-template-columns: var(--largura-sidebar) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* A SideBar fica parada enquanto o conteúdo rola, como no protótipo. */
+.lateral {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.conteudo {
+  min-width: 0;
+  background: var(--cor-fundo);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+
+  .lateral {
+    height: auto;
+    z-index: 10;
+  }
+}

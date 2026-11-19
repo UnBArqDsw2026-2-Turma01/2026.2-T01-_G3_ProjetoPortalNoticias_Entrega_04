@@ -1,0 +1,88 @@
+/* Figma "Card Evento" (379 x 240). Só cores var(--...). */
+
+.card {
+  padding: 25px 21px 24px 33px;
+  border-radius: var(--raio-card);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+  color: var(--cor-texto);
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 1.1rem;
+  font-weight: inherit;
+}
+
+.evento {
+  display: flex;
+  gap: 17px;
+  margin: 10px 0 0 5px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.evento:hover .nome {
+  text-decoration: underline;
+}
+
+.imagem {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 77px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nome {
+  font-size: 0.75rem; /* 12px */
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--cor-texto-apagado);
+  font-size: 0.625rem; /* 10px */
+}
+
+.ponto {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cor-texto-apagado);
+}
+
+.ha {
+  font-size: 0.52rem; /* ~8.4px */
+}
+
+.verTodos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-primaria);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.verTodos:hover {
+  text-decoration: underline;
+}
+
+.evento:focus-visible,
+.verTodos:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+}

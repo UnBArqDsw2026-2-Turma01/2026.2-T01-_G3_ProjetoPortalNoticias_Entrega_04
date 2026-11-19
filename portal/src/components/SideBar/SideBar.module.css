@@ -1,0 +1,186 @@
+/* Medidas tiradas do Figma (frame "Side Bar", 342 x 900). Só cores var(--...). */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--largura-sidebar);
+  height: 100%;
+  padding: 61px 24px 40px 27px;
+  background: var(--cor-sidebar);
+  color: var(--cor-texto-sidebar);
+  overflow-y: auto;
+}
+
+.logo {
+  display: block;
+  width: 296px;
+  max-width: 100%;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Menu (componente "Menu de Opções SideBar") ---------- */
+
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 73px 0 0 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: var(--raio-card);
+  color: var(--cor-texto-sidebar);
+  font-size: 0.9375rem; /* 15px */
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.item:hover {
+  background: var(--cor-sidebar-hover);
+}
+
+.item:focus-visible,
+.categoria:focus-visible,
+.verTodos:focus-visible,
+.logo:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+.itemAtivo,
+.itemAtivo:hover {
+  background: var(--cor-primaria);
+  color: var(--cor-sobre-primaria);
+}
+
+.icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 18px;
+  height: 21px;
+}
+
+.rotulo {
+  white-space: nowrap;
+}
+
+/* ---------- Meus Conteúdos (só logado) ---------- */
+
+.meusConteudos {
+  margin-top: 63px;
+  padding-top: 28px;
+  border-top: 1px solid var(--cor-divisor-sidebar);
+}
+
+.tituloSecao {
+  margin-left: 30px;
+  color: var(--cor-texto-sidebar-apagado);
+  font-size: 0.9375rem;
+  font-weight: inherit;
+}
+
+.categorias {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 24px 0 0 30px;
+}
+
+.categoria {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--cor-texto-sidebar);
+  font-size: 0.8125rem; /* 13px */
+  text-decoration: none;
+}
+
+.categoria:hover {
+  text-decoration: underline;
+}
+
+.circulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+.verTodos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-top: 28px;
+  border: 1px solid var(--cor-texto-sidebar-apagado);
+  border-radius: var(--raio-card);
+  color: var(--cor-texto-sidebar-apagado);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+
+.verTodos:hover {
+  color: var(--cor-texto-sidebar);
+  border-color: var(--cor-texto-sidebar);
+}
+
+/* ---------- Telas estreitas: vira uma barra no topo ---------- */
+
+@media (max-width: 900px) {
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+    padding: 12px 16px;
+    overflow: visible;
+  }
+
+  .logo {
+    flex: 0 0 auto;
+    width: 88px;
+  }
+
+  .menu {
+    flex-direction: row;
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .item {
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  /* Abaixo de 600px mostra só os ícones (o nome continua acessível pelo leitor de tela). */
+  @media (max-width: 600px) {
+    .rotulo {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  .meusConteudos {
+    display: none;
+  }
+}

@@ -1,0 +1,51 @@
+/* Figma "Trending" (379 x 423). Só cores var(--...). */
+
+.card {
+  min-height: 423px; /* altura do Figma: o card não encolhe com menos assuntos */
+  padding: 36px 36px 32px;
+  border-radius: var(--raio-card);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+  color: var(--cor-texto);
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.1rem; /* ~17.7px */
+  font-weight: inherit;
+}
+
+.lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.assunto {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: inherit;
+  font-size: 0.79rem; /* ~12.7px */
+  text-decoration: none;
+}
+
+.assunto:hover {
+  text-decoration: underline;
+}
+
+.assunto:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+.posicao {
+  flex: 0 0 17px;
+  color: var(--cor-primaria);
+  font-size: 1.58rem; /* ~25.3px */
+  line-height: 1.2;
+}
