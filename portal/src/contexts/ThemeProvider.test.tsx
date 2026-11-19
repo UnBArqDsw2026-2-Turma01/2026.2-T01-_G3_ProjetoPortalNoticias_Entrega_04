@@ -51,7 +51,7 @@ describe("ThemeProvider", () => {
 
   it("persiste os novos controles e redefine todas as preferências", () => {
     const { unmount } = render(<ThemeProvider><Acessibilidade /></ThemeProvider>);
-    for (const nome of ["Brilho", "Saturação", "Guia de leitura", "Destacar links"]) {
+    for (const nome of ["Inverter cores", "Brilho", "Saturação", "Guia de leitura", "Destacar links"]) {
       fireEvent.click(screen.getByRole("switch", { name: nome }));
     }
     unmount();
