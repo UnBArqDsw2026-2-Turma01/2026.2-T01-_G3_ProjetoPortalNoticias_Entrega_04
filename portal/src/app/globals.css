@@ -27,6 +27,8 @@
   --cor-sidebar: #1b1c1e;
   --cor-texto-sidebar: #fefefe;
   --cor-texto-sidebar-apagado: #979797;
+  --cor-divisor-sidebar: #4b4b4b; /* linha acima de "Meus Conteúdos" (vaga 2) */
+  --cor-sidebar-hover: rgba(255, 255, 255, 0.08); /* fundo do item ao passar o mouse (vaga 2) */
 
   /* Categorias (círculos e badges do Figma) */
   --cor-politica: #1e6bef;
