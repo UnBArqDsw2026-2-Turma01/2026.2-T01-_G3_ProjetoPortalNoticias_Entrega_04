@@ -51,8 +51,10 @@
  * Tema escuro (Home Page DarkMode no Figma): o fundo vira azul-marinho e os textos escritos
  * sobre ele ficam brancos. Os cards continuam claros e a SideBar já é escura.
  * O ThemeProvider (vaga 6) aplica data-tema="escuro" no <html>.
+ * O seletor é :root[data-tema="escuro"] (e não só [data-tema="escuro"]) porque este último tem
+ * a MESMA especificidade de :root, e aí só a ordem no arquivo decidiria qual vence.
  */
-[data-tema="escuro"] {
+:root[data-tema="escuro"] {
   --cor-fundo: #0f172a;
   --cor-texto-sobre-fundo: #ffffff;
 }
