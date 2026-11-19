@@ -22,8 +22,8 @@
   padding: 7px 12px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-pequeno);
-  background: var(--cor-superficie);
-  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  color: var(--cor-texto-sobre-fundo);
   font: inherit;
   font-size: 0.875rem;
   font-weight: 400;
@@ -56,6 +56,15 @@ textarea.entrada {
   appearance: none;
   padding-right: 36px;
   cursor: pointer;
+}
+
+/* Enquanto o leitor não escolhe, o texto do placeholder fica apagado como no Figma. */
+.selecao select[data-vazio] {
+  color: var(--cor-texto-apagado);
+}
+
+.selecao select[data-vazio] option {
+  color: var(--cor-texto-sobre-fundo);
 }
 
 .seta {

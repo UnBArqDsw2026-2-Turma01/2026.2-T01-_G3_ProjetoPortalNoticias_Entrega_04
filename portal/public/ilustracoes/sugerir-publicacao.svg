@@ -1,0 +1,51 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ilustração decorativa do banner de Sugerir Publicação: dois sapos repórteres.
+       Desenhada para o portal, no mesmo estilo branco/preto/vermelho da marca. -->
+  <g id="sapo-reporter">
+    <ellipse cx="190" cy="382" rx="76" ry="11" fill="#171918" fill-opacity="0.85"/>
+    <path d="M145 300c0-45 20-70 45-70s45 25 45 70v52c0 20-14 30-45 30s-45-10-45-30v-52z" fill="#FDFBFA"/>
+    <ellipse cx="162" cy="368" rx="24" ry="12" fill="#FDFBFA"/>
+    <ellipse cx="218" cy="368" rx="24" ry="12" fill="#FDFBFA"/>
+    <ellipse cx="190" cy="184" rx="60" ry="50" fill="#FDFBFA"/>
+    <circle cx="160" cy="139" r="20" fill="#FDFBFA"/>
+    <circle cx="220" cy="139" r="20" fill="#FDFBFA"/>
+    <ellipse cx="160" cy="139" rx="8" ry="12" fill="#171918"/>
+    <ellipse cx="220" cy="139" rx="8" ry="12" fill="#171918"/>
+    <ellipse cx="190" cy="202" rx="34" ry="18" fill="#F14343"/>
+    <path d="M170 202c8 8 32 8 40 0" stroke="#171918" stroke-width="4" stroke-linecap="round"/>
+    <path d="M143 244c-26 4-42 22-42 44 0 10 8 16 18 12 14-6 26-18 34-32" fill="#FDFBFA"/>
+    <path d="M237 244c26 4 42 22 42 44 0 10-8 16-18 12-14-6-26-18-34-32" fill="#FDFBFA"/>
+    <g transform="rotate(-18 284 214)">
+      <rect x="278" y="206" width="12" height="58" rx="6" fill="#171918"/>
+      <circle cx="284" cy="200" r="22" fill="#4CAF50"/>
+      <circle cx="284" cy="200" r="22" stroke="#171918" stroke-width="4"/>
+      <circle cx="277" cy="194" r="2.5" fill="#171918"/>
+      <circle cx="291" cy="194" r="2.5" fill="#171918"/>
+      <circle cx="284" cy="207" r="2.5" fill="#171918"/>
+    </g>
+  </g>
+
+  <g id="sapo-camera">
+    <ellipse cx="432" cy="382" rx="76" ry="11" fill="#171918" fill-opacity="0.85"/>
+    <path d="M387 300c0-45 20-70 45-70s45 25 45 70v52c0 20-14 30-45 30s-45-10-45-30v-52z" fill="#FDFBFA"/>
+    <ellipse cx="404" cy="368" rx="24" ry="12" fill="#FDFBFA"/>
+    <ellipse cx="460" cy="368" rx="24" ry="12" fill="#FDFBFA"/>
+    <ellipse cx="432" cy="184" rx="60" ry="50" fill="#FDFBFA"/>
+    <circle cx="402" cy="139" r="20" fill="#FDFBFA"/>
+    <circle cx="462" cy="139" r="20" fill="#FDFBFA"/>
+    <ellipse cx="402" cy="139" rx="8" ry="12" fill="#171918"/>
+    <ellipse cx="462" cy="139" rx="8" ry="12" fill="#171918"/>
+    <ellipse cx="432" cy="202" rx="30" ry="16" fill="#F14343"/>
+    <path d="M415 202c7 7 27 7 34 0" stroke="#171918" stroke-width="4" stroke-linecap="round"/>
+    <path d="M386 246c-24 6-38 24-36 44 2 10 10 14 19 9 12-8 22-20 28-34" fill="#FDFBFA"/>
+    <path d="M478 246c24 6 38 24 36 44-2 10-10 14-19 9-12-8-22-20-28-34" fill="#FDFBFA"/>
+    <g>
+      <rect x="392" y="168" width="86" height="52" rx="10" fill="#171918"/>
+      <rect x="404" y="158" width="30" height="14" rx="5" fill="#171918"/>
+      <circle cx="470" cy="194" r="24" fill="#171918" stroke="#FDFBFA" stroke-width="5"/>
+      <circle cx="470" cy="194" r="14" fill="#4B4B4B"/>
+      <circle cx="465" cy="189" r="4" fill="#FDFBFA" fill-opacity="0.7"/>
+      <circle cx="410" cy="182" r="4" fill="#F14343"/>
+    </g>
+  </g>
+</svg>

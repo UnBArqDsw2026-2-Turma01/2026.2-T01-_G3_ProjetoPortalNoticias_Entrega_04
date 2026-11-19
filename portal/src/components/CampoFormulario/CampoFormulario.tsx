@@ -82,7 +82,7 @@ export function CampoFormulario({
 
       {tipo === "selecao" && (
         <div className={styles.selecao}>
-          <select {...comuns} onChange={(evento) => aoMudar(evento.target.value)}>
+          <select {...comuns} data-vazio={valor === "" ? "" : undefined} onChange={(evento) => aoMudar(evento.target.value)}>
             <option value="">{placeholder ?? "Selecione uma opção"}</option>
             {opcoes.map((opcao) => (
               <option key={opcao.valor} value={opcao.valor}>
