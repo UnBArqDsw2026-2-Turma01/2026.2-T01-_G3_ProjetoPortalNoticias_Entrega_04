@@ -1,0 +1,60 @@
+.pagina {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.aviso {
+  margin: 8px 0 32px;
+  color: var(--cor-texto-apagado);
+  font-size: 0.875rem;
+}
+
+.lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 29px;
+}
+
+.card {
+  overflow: hidden;
+  background: var(--cor-superficie);
+  border-radius: var(--raio-pequeno);
+  box-shadow: var(--sombra-card);
+}
+
+.imagem {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.conteudo {
+  padding: 6px 8px 12px;
+  color: var(--cor-texto);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--raio-badge);
+  color: var(--cor-sobre-primaria);
+  font-size: 0.625rem;
+}
+
+.tituloNoticia {
+  margin: 6px 0;
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.autor {
+  color: var(--cor-texto-apagado);
+  font-size: 0.75rem;
+}
