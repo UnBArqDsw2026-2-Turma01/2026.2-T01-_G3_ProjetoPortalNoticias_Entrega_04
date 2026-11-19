@@ -125,3 +125,79 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* Preferências globais da vaga 6. Os cards permanecem claros no Figma DarkMode. */
+:root {
+  --cor-capa-perfil: #000000;
+  --cor-texto-capa: #ffffff;
+  --cor-banner-acessibilidade: #c5333e;
+  --cor-texto-banner: #ebe4db;
+  --cor-perfil-secundaria: #979797;
+}
+
+:root[data-tema="escuro"] {
+  --cor-perfil-secundaria: #ffffff;
+}
+
+:root[data-fonte="grande"] { --tamanho-fonte-base: 18px; }
+:root[data-fonte="muito-grande"] { --tamanho-fonte-base: 22px; }
+
+:root[data-contraste="alto"] {
+  --cor-fundo: #000000;
+  --cor-texto-sobre-fundo: #ffffff;
+  --cor-superficie: #000000;
+  --cor-superficie-destaque: #000000;
+  --cor-texto: #ffffff;
+  --cor-texto-suave: #ffffff;
+  --cor-texto-apagado: #ffffff;
+  --cor-borda: #ffffff;
+  --cor-primaria: #ffff00;
+  --cor-sobre-primaria: #000000;
+  --cor-sidebar: #000000;
+  --cor-texto-sidebar: #ffffff;
+  --cor-texto-sidebar-apagado: #ffffff;
+  --cor-divisor-sidebar: #ffffff;
+  --cor-sidebar-hover: #333333;
+  --cor-perfil-secundaria: #ffffff;
+  --cor-banner-acessibilidade: #000000;
+  --cor-texto-banner: #ffffff;
+  --sombra-card: 0 0 0 1px #ffffff;
+}
+
+:root[data-animacoes="reduzidas"],
+:root[data-animacoes="reduzidas"] *,
+:root[data-animacoes="reduzidas"] *::before,
+:root[data-animacoes="reduzidas"] *::after {
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+
+:root[data-cursor="grande"],
+:root[data-cursor="grande"] * { cursor: var(--cursor-acessivel) !important; }
+
+:root {
+  --inversao: 0;
+  --brilho: 1;
+  --saturacao: 0;
+  --cor-nivel-inativo: #d9d9d9;
+  --cor-guia-leitura: #ffff00;
+}
+:root[data-inversao="ativo"] { --inversao: 1; }
+:root[data-brilho="ativo"] { --brilho: .8; }
+:root[data-saturacao="ativo"] { --saturacao: 1; }
+:root[data-inversao="ativo"], :root[data-brilho="ativo"], :root[data-saturacao="ativo"] {
+  filter: invert(var(--inversao)) brightness(var(--brilho)) grayscale(var(--saturacao));
+}
+:root[data-links="ativo"] a { text-decoration: underline !important; outline: 2px solid currentColor; outline-offset: 2px; }
+:root[data-guia="ativo"]::after {
+  content: "";
+  position: fixed;
+  inset-inline: 0;
+  top: var(--posicao-guia, 50vh);
+  height: 3px;
+  background: var(--cor-guia-leitura);
+  outline: 1px solid var(--cor-capa-perfil);
+  z-index: 9999;
+  pointer-events: none;
+}

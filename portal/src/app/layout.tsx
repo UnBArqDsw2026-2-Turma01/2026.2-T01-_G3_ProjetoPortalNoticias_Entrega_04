@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, League_Gothic } from "next/font/google";
+import { Inter, League_Gothic, League_Spartan } from "next/font/google";
 import { AppLayout } from "@/components/AppLayout";
+import { ThemeProvider } from "@/contexts/ThemeProvider";
 import "./globals.css";
 
 // Fonte do protótipo (Inter). A variável --fonte-inter é usada por --fonte-base em globals.css.
@@ -10,11 +11,8 @@ const inter = Inter({
   weight: ["400", "600", "700"],
 });
 
-// Títulos dos banners (vaga 3). Carregada aqui porque next/font não funciona nos testes do Vitest.
-const leagueGothic = League_Gothic({
-  variable: "--fonte-league-gothic",
-  subsets: ["latin"],
-});
+const leagueGothic = League_Gothic({ variable: "--fonte-league-gothic", subsets: ["latin"], weight: "400" });
+const leagueSpartan = League_Spartan({ variable: "--fonte-league-spartan", subsets: ["latin"], weight: "600" });
 
 export const metadata: Metadata = {
   title: "Burburinho: Portal de Notícias",
@@ -26,9 +24,11 @@ export const metadata: Metadata = {
 // Próximo passo (vaga 6): envolver o <AppLayout> com <ThemeProvider>.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${leagueGothic.variable}`}>
+    <html lang="pt-BR" className={`${inter.variable} ${leagueGothic.variable} ${leagueSpartan.variable}`}>
       <body>
-        <AppLayout>{children}</AppLayout>
+        <ThemeProvider>
+          <AppLayout>{children}</AppLayout>
+        </ThemeProvider>
       </body>
     </html>
   );
