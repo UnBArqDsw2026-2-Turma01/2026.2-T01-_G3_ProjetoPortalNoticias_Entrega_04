@@ -43,7 +43,10 @@ src/
    Métodos: `listarTodas()`, `listarRecentes(n)`, `buscarPorId(id)`, `listarPorCategoria(c)`, `listarDestaques()`, `buscar(termo)`, `adicionarSugestao(noticia)`, `listarSugestoes()`.
 2. **Tipos compartilhados** em `@/types/noticia`: `Noticia`, `Categoria`, `CATEGORIAS`, `NOMES_CATEGORIAS`.
 3. **Cores só com variáveis** (`var(--cor-primaria)`, `var(--cor-cultura)`...), definidas em `src/app/globals.css` a partir do Figma. Nunca `#fff` ou `black` dentro de componente, senão o modo escuro quebra.
-4. **Imagens e arquivos de `public/`:** no Pages o portal fica numa subpasta. `<Link>` e `next/image` já tratam isso; em `<img src>`, CSS `url()` ou `fetch` use `caminhoPublico("/noticias/x.jpg")` de `@/lib/caminhos`.
+4. **Imagens e arquivos de `public/`:** no Pages o portal fica numa subpasta. Só o `<Link>` acrescenta essa subpasta sozinho. O `next/image` **não** acrescenta ([documentação do `basePath`](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath#images)), e o mesmo vale para `<img src>`, CSS `url()` e `fetch`. Em todos esses casos use `caminhoPublico()` de `@/lib/caminhos`, senão a imagem funciona no `npm run dev` e quebra no site publicado:
+   ```tsx
+   <Image src={caminhoPublico(noticia.imagemUrl)} alt="" width={84} height={77} />
+   ```
 5. **Rotas dinâmicas** (ex.: `/noticia/[id]`, `/categoria/[categoria]`): o export estático exige **as duas** coisas abaixo, senão o build falha:
    ```tsx
    export const dynamicParams = false; // só existem as páginas geradas abaixo

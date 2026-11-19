@@ -1,0 +1,70 @@
+/* Banner do Figma: 1098 x 605, faixa vermelha de 440 com os sapos passando dela. */
+
+.pagina {
+  padding-bottom: 56px;
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.hero {
+  position: relative;
+  aspect-ratio: 1098 / 605;
+  max-height: 605px;
+  width: 100%;
+  overflow: hidden;
+  background: var(--cor-fundo-ilustracao);
+}
+
+.faixa {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 72.75%;
+  border-radius: 0 0 10px 10px;
+  background: var(--cor-banner-explorar);
+}
+
+/* Presos à direita: em telas largas a faixa cresce e os sapos mantêm o tamanho. */
+.sapos {
+  position: absolute;
+  top: 0;
+  right: -1%;
+  width: auto;
+  height: 100%;
+}
+
+.titulo {
+  position: absolute;
+  top: 8.6%;
+  left: 4.55%;
+  display: flex;
+  flex-direction: column;
+  color: var(--cor-texto-banner);
+  font-weight: inherit;
+  line-height: 1;
+}
+
+.chamada {
+  font-size: clamp(1.1rem, 3.3vw, 2.28rem);
+}
+
+.destaque {
+  margin-top: 0.12em;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(3rem, 9.6vw, 6.58rem);
+  font-weight: 400;
+}
+
+.comunidades {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 56px;
+  margin-top: 40px;
+  padding: 0 59px 0 69px;
+  list-style: none;
+}
+
+@media (max-width: 900px) {
+  .comunidades {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 24px;
+  }
+}
