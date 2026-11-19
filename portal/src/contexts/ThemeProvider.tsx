@@ -42,7 +42,7 @@ const PADRAO: PreferenciasTema = {
   inverterCores: false, brilhoReduzido: false, semSaturacao: false, guiaLeitura: false, destacarLinks: false,
 };
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export function ThemeProvider({ children, temaInicial }: { children: ReactNode; temaInicial?: Tema }) {
   const [preferencias, setPreferencias] = useState(PADRAO);
   const [carregado, setCarregado] = useState(false);
 
@@ -67,11 +67,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } catch {
       // Armazenamento indisponível ou inválido: mantém as preferências padrão.
     }
+    if (temaInicial !== undefined) inicial.tema = temaInicial;
     // A leitura inicial depende das APIs do navegador e ocorre apenas após a hidratação.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setPreferencias(inicial);
     setCarregado(true);
-  }, []);
+  }, [temaInicial]);
 
   useEffect(() => {
     if (!carregado) return;
