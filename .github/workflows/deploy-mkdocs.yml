@@ -1,4 +1,4 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy GitHub Pages (MkDocs + Portal)
 
 on:
   push:
@@ -32,6 +32,34 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build documentation
         run: mkdocs build --strict
+
+      # ---------- Portal Next.js (publicado em /portal) ----------
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: portal/package-lock.json
+      - name: Install portal dependencies
+        working-directory: portal
+        run: npm ci
+      - name: Test portal
+        working-directory: portal
+        run: npm test
+      - name: Build portal
+        working-directory: portal
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}/portal
+        run: npm run build
+      - name: Copy portal into the site
+        run: cp -r portal/out site/portal
+
+      # ---------- Storybook (publicado em /storybook) ----------
+      # Vaga 7 (#7): depois de configurar o Storybook, descomente o passo abaixo.
+      # - name: Build Storybook
+      #   working-directory: portal
+      #   run: npm run build-storybook -- -o ../site/storybook
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
