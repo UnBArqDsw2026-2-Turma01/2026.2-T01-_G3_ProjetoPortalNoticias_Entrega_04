@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
+import { BarraBusca } from "@/components/BarraBusca";
+import { NotificationBell } from "@/components/NotificationBell";
 import { CardEmAlta } from "@/components/CardEmAlta";
 import { CardEvento, type Evento } from "@/components/CardEvento";
-import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
 import { caminhoPublico } from "@/lib/caminhos";
 import type { Noticia } from "@/types/noticia";
 import { Marcador } from "./Marcador";
@@ -42,8 +44,7 @@ export function PaginaInicial({ destaque, ultimas, assuntosEmAlta, evento }: Pag
 
           {logado ? (
             <>
-              {/* TODO vaga 5 (#5): trocar pelo <NotificationBell /> */}
-              <Marcador componente="NotificationBell" />
+              <NotificationBell />
               <Link href="/perfil" className={styles.avatar} aria-label="Meu perfil">
                 <svg width="60" height="60" viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="var(--cor-texto-apagado)" /><circle cx="42.5" cy="32" r="13" fill="var(--cor-fundo)" /><path d="M20 68c0-22 45-22 45 0Z" fill="var(--cor-fundo)" /></svg>
               </Link>
@@ -61,8 +62,9 @@ export function PaginaInicial({ destaque, ultimas, assuntosEmAlta, evento }: Pag
 
       <div className={styles.colunas}>
         <div className={styles.principal}>
-          {/* TODO vaga 5 (#5): trocar pela <BarraBusca /> */}
-          <Marcador componente="BarraBusca">Buscar conteúdos, notícias e assuntos</Marcador>
+          <BarraBusca
+            placeholder="Buscar conteúdos, notícias e assuntos"
+          />
 
           {destaque && (
             // TODO vaga 3 (#3): trocar por <PostCard noticia={destaque} variante="destaque" />
