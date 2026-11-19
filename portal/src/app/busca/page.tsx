@@ -1,7 +1,8 @@
 "use client";
 
+import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { repositorioNoticias } from "@/lib/repositorioNoticias";
 import { PostCard } from "@/components/PostCard";
 import type { Noticia } from "@/types/noticia";
@@ -11,14 +12,11 @@ import styles from "./page.module.css";
 function ConteudoBusca() {
   const searchParams = useSearchParams();
   const termo = searchParams.get("q") ?? "";
-  const [resultados, setResultados] = useState<Noticia[]>([]);
 
-  useEffect(() => {
-    if (!termo.trim()) {
-      setResultados([]);
-      return;
-    }
-    setResultados(repositorioNoticias.buscar(termo));
+  // Computa os resultados a partir do termo (sem useEffect: é derivado direto dos props/params).
+  const resultados: Noticia[] = useMemo(() => {
+    if (!termo.trim()) return [];
+    return repositorioNoticias.buscar(termo);
   }, [termo]);
 
   return (

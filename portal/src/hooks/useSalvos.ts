@@ -20,15 +20,11 @@ function lerIdsSalvos(): string[] {
 }
 
 export function useSalvos() {
-  const [idsSalvos, setIdsSalvos] = useState<string[]>([]);
+  // Lê do localStorage a cada renderização (não é uma variável de módulo).
+  // useState lê o localStorage no momento da renderização.
+  const [idsSalvos, setIdsSalvos] = useState<string[]>(() => lerIdsSalvos());
 
-  // Carrega do localStorage só no navegador (useEffect). No export estático (servidor)
-  // o código roda sem window, então acessar localStorage fora do useEffect quebra o build.
-  useEffect(() => {
-    setIdsSalvos(lerIdsSalvos());
-  }, []);
-
-  // Persiste toda mudança no localStorage, com try/catch.
+  // Persiste na localStorage quando idsSalvos muda (não chama setState dentro do effect).
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {

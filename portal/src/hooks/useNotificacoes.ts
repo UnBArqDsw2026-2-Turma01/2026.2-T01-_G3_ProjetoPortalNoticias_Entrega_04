@@ -10,6 +10,14 @@ export interface Notificacao {
   publicadaEm: string; // ISO 8601
 }
 
+interface NoticiaPublicada {
+  titulo?: string;
+}
+
+interface SugestaoEnviada {
+  titulo?: string;
+}
+
 // 3 notificações de exemplo para começar.
 const NOTIFICACOES_INICIAIS: Notificacao[] = [
   {
@@ -39,12 +47,11 @@ export function useNotificacoes() {
   // O cancelamento é essencial: sem ele, cada render cria uma nova assinatura que
   // nunca é removida, vazando memória e disparando callbacks em componentes desmontados.
   useEffect(() => {
-    const cancelarNoticia = assinar("noticia-publicada", (dados: any) => {
-      const noticia = dados as { id?: string; titulo?: string };
+    const cancelarNoticia = assinar("noticia-publicada", (dados: NoticiaPublicada) => {
       setNotificacoes((atual) => [
         {
           id: `notif-${Date.now()}`,
-          titulo: noticia.titulo ?? "Nova notícia publicada",
+          titulo: dados.titulo ?? "Nova notícia publicada",
           lida: false,
           publicadaEm: new Date().toISOString(),
         },
@@ -52,12 +59,11 @@ export function useNotificacoes() {
       ]);
     });
 
-    const cancelarSugestao = assinar("sugestao-enviada", (dados: any) => {
-      const sugestao = dados as { id?: string; titulo?: string };
+    const cancelarSugestao = assinar("sugestao-enviada", (dados: SugestaoEnviada) => {
       setNotificacoes((atual) => [
         {
           id: `notif-${Date.now()}`,
-          titulo: sugestao.titulo ?? "Sua sugestão foi enviada",
+          titulo: dados.titulo ?? "Sua sugestão foi enviada",
           lida: false,
           publicadaEm: new Date().toISOString(),
         },

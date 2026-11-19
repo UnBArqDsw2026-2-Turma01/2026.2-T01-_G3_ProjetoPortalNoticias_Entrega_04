@@ -1,6 +1,13 @@
 import type { ComponentType } from "react";
 import { BarraBusca } from "./BarraBusca";
 
+const meta = {
+  title: "Interação/BarraBusca",
+  component: BarraBusca,
+  tags: ["autodocs"],
+};
+export default meta;
+
 function largura(px: number) {
   return function ComLargura(Story: ComponentType) {
     return <div style={{ width: px }}><Story /></div>;

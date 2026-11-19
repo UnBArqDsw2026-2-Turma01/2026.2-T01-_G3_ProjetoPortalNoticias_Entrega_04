@@ -11,13 +11,6 @@ export function NotificationBell() {
   const [aberta, setAberta] = useState(false);
 
   const alternar = useCallback(() => setAberta((a) => !a), []);
-  const fechar = useCallback(() => setAberta(false), []);
-
-  // Ao abrir, marca todas como lidas (o contador zera).
-  const aoAbrir = useCallback(() => {
-    marcarComoLidas();
-    setAberta(true);
-  }, [marcarComoLidas]);
 
   return (
     <div className={styles.wrapper} onClick={alternar} role="button" tabIndex={0} aria-label="Notificações" aria-expanded={aberta} aria-controls="lista-notificacoes">

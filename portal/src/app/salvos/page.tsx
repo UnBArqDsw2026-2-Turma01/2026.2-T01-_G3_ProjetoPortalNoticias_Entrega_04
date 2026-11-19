@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { repositorioNoticias } from "@/lib/repositorioNoticias";
 import { useSalvos } from "@/hooks/useSalvos";
 import { PostCard } from "@/components/PostCard";

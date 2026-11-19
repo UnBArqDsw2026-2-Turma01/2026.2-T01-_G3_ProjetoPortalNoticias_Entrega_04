@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
 import { BarraBusca } from "@/components/BarraBusca";
 import { NotificationBell } from "@/components/NotificationBell";
 import { CardEmAlta } from "@/components/CardEmAlta";
 import { CardEvento, type Evento } from "@/components/CardEvento";
-import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
 import { caminhoPublico } from "@/lib/caminhos";
 import type { Noticia } from "@/types/noticia";
 import { Marcador } from "./Marcador";
