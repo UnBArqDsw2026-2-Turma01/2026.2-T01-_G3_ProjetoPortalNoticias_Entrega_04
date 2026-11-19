@@ -1,0 +1,35 @@
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 133px;
+  min-height: 33px;
+  padding: 0 16px;
+  border: 1px solid var(--cor-primaria);
+  border-radius: 11px;
+  font: inherit;
+  font-size: 0.97rem;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.botao:hover {
+  filter: brightness(1.08);
+}
+
+.botao:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+.contorno {
+  background: transparent;
+  color: var(--cor-primaria);
+}
+
+.seguindo,
+.preenchido {
+  background: var(--cor-primaria);
+  color: var(--cor-sobre-primaria);
+}

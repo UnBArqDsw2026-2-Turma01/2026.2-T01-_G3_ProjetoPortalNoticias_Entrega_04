@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, League_Gothic } from "next/font/google";
 import { AppLayout } from "@/components/AppLayout";
 import "./globals.css";
 
@@ -8,6 +8,12 @@ const inter = Inter({
   variable: "--fonte-inter",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+});
+
+// Títulos dos banners (vaga 3). Carregada aqui porque next/font não funciona nos testes do Vitest.
+const leagueGothic = League_Gothic({
+  variable: "--fonte-league-gothic",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +26,7 @@ export const metadata: Metadata = {
 // Próximo passo (vaga 6): envolver o <AppLayout> com <ThemeProvider>.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={inter.variable}>
+    <html lang="pt-BR" className={`${inter.variable} ${leagueGothic.variable}`}>
       <body>
         <AppLayout>{children}</AppLayout>
       </body>

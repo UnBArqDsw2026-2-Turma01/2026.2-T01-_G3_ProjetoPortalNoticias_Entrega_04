@@ -36,8 +36,15 @@
   --cor-tecnologia: #7a42e6;
   --cor-cultura: #be37bc;
 
+  /* Banners (páginas de categoria e Explorar, vaga 3) */
+  --cor-texto-banner: #ebe4db;
+  --gradiente-banner: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.49) 57.792%);
+  --cor-banner-explorar: #c5333e;
+  --cor-fundo-ilustracao: #1b1c1e;
+
   /* Tipografia: Inter Semi Bold em todo o protótipo */
   --fonte-base: var(--fonte-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: var(--fonte-league-gothic), "Arial Narrow", sans-serif;
   --peso-texto: 600;
   --tamanho-fonte-base: 16px; /* a página de Acessibilidade (vaga 6) altera este valor */
 
@@ -83,6 +90,35 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Barra de rolagem (vaga 3): fina, arredondada e salmão ao passar o mouse.
+   Trilho transparente para combinar com o fundo claro e com a SideBar escura. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--cor-texto-apagado) padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-primaria) padding-box;
+}
+
+/* Firefox não tem ::-webkit-scrollbar e usa as propriedades padrão. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--cor-texto-apagado) transparent;
+  }
 }
 
 img {

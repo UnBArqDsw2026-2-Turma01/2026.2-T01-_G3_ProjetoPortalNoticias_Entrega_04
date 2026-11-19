@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useCategoriasSeguidas } from "@/hooks/useCategoriasSeguidas";
 import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
 import { caminhoPublico } from "@/lib/caminhos";
 import { NOMES_CATEGORIAS, type Categoria } from "@/types/noticia";
@@ -14,7 +15,7 @@ export interface SideBarProps {
   itemAtivo?: IdItemMenu;
   /** Força o estado de login. Sem ela, usa o login simulado (useSessaoSimulada). */
   logado?: boolean;
-  /** Categorias de "Meus Conteúdos" (só aparecem logado). Sem ela, usa as do usuário de exemplo. */
+  /** Categorias de "Meus Conteúdos" (só aparecem logado). Sem ela, usa as seguidas pelo usuário (useCategoriasSeguidas). */
   categoriasSeguidas?: readonly Categoria[];
 }
 
@@ -24,10 +25,11 @@ export interface SideBarProps {
 export function SideBar({ itemAtivo, logado, categoriasSeguidas }: SideBarProps) {
   const pathname = usePathname();
   const sessao = useSessaoSimulada();
+  const { seguidas } = useCategoriasSeguidas();
 
   const ativo = itemAtivo ?? itemAtivoPelaRota(pathname);
   const estaLogado = logado ?? sessao.logado;
-  const categorias = categoriasSeguidas ?? sessao.usuario?.categoriasSeguidas ?? [];
+  const categorias = categoriasSeguidas ?? seguidas;
 
   return (
     <aside className={styles.sidebar}>

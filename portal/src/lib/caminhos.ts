@@ -1,6 +1,7 @@
 // No GitHub Pages o portal fica em uma subpasta (/.../portal). O Next aplica o basePath
-// sozinho em <Link> e em next/image, mas NÃO em <img src="/...">, em CSS url() nem em fetch().
-// Use esta função nesses casos: caminhoPublico("/noticias/x.jpg").
+// sozinho só em <Link>. Ele NÃO aplica em next/image (exigência documentada do Next), em
+// <img src="/...">, em CSS url() nem em fetch(). Use esta função nesses casos:
+// caminhoPublico("/noticias/x.jpg").
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 

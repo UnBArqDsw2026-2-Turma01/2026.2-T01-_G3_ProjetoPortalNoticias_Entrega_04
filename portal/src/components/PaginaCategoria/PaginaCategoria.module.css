@@ -1,0 +1,107 @@
+.pagina {
+  padding-bottom: 56px;
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: clamp(220px, 37.4vw, 411px);
+  overflow: hidden;
+}
+
+.fotoBanner {
+  object-fit: cover;
+  object-position: var(--posicao-banner, center);
+}
+
+.sombraBanner {
+  position: absolute;
+  inset: 0;
+  background: var(--gradiente-banner);
+}
+
+.tituloBanner {
+  position: relative;
+  padding: 0 16px;
+  color: var(--cor-texto-banner);
+  font-family: var(--fonte-titulo);
+  font-size: clamp(3.5rem, 9.6vw, 6.58rem);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.conteudo {
+  padding: 41px 76px 0 52px;
+}
+
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.identidade {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.31rem;
+}
+
+.circulo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--cor-categoria);
+}
+
+.descricao {
+  max-width: 760px;
+  margin-top: 40px;
+  font-size: 1.0625rem;
+  line-height: 1.25;
+}
+
+.secao {
+  margin-top: 36px;
+}
+
+.ultimas {
+  margin-top: 52px;
+}
+
+.tituloSecao {
+  margin-bottom: 28px;
+  font-size: 1.25rem;
+  font-weight: inherit;
+}
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px clamp(24px, 10vw, 145px);
+  list-style: none;
+}
+
+.vazio {
+  color: var(--cor-texto-sobre-fundo);
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .conteudo {
+    padding: 32px 24px 0;
+  }
+
+  .lista {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

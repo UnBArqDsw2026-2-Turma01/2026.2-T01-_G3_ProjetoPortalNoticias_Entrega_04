@@ -1,0 +1,259 @@
+.card {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  box-shadow: var(--sombra-card);
+  transition: transform 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.imagem {
+  position: relative;
+  overflow: hidden;
+}
+
+.imagem img {
+  object-fit: cover;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.acoes {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.titulo {
+  font-weight: inherit;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible::after {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: -3px;
+}
+
+.resumo {
+  color: var(--cor-texto-suave);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.autor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.avatar {
+  display: grid;
+  background: var(--cor-categoria);
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--cor-sobre-primaria);
+  line-height: 1;
+}
+
+.nomeAutor {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ponto {
+  flex-shrink: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cor-texto-apagado);
+}
+
+.tempo {
+  flex-shrink: 0;
+  color: var(--cor-texto-apagado);
+}
+
+.botao {
+  flex-shrink: 0;
+  margin-left: auto;
+  border-radius: 9px;
+  background: var(--cor-primaria);
+  color: var(--cor-sobre-primaria);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.selo {
+  padding: 2px 15px;
+  border-radius: 7px;
+  background: var(--cor-primaria);
+  color: var(--cor-sobre-primaria);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* ---------- destaque (598 x 323) ---------- */
+
+.destaque {
+  grid-template-columns: minmax(0, 230px) minmax(0, 1fr);
+  min-height: 323px;
+  border-radius: var(--raio-card);
+  background: var(--cor-superficie-destaque);
+}
+
+.destaque .imagem {
+  border-radius: 11px;
+}
+
+.destaque .corpo {
+  gap: 14px;
+  padding: 22px 15px 22px 22px;
+}
+
+.destaque .titulo {
+  font-size: 1.58rem;
+  max-width: 17ch;
+}
+
+.destaque .resumo {
+  max-width: 34ch;
+}
+
+.destaque .avatar {
+  width: 33px;
+  height: 33px;
+  font-size: 1.25rem;
+}
+
+.destaque .nomeAutor {
+  font-size: 0.8125rem;
+}
+
+.destaque .tempo {
+  font-size: 0.79rem;
+}
+
+.destaque .botao {
+  padding: 4px 21px;
+  font-size: 1rem;
+}
+
+/* ---------- compacto (180 x 212) ---------- */
+
+.compacto {
+  grid-template-rows: 100px auto;
+  min-height: 212px;
+  border-radius: var(--raio-pequeno);
+}
+
+.compacto .imagem {
+  border-radius: 4.66px;
+}
+
+.compacto .corpo {
+  gap: 6px;
+  padding: 6px 8px 12px;
+}
+
+.compacto .titulo {
+  font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* No Figma nome e tempo têm 7px: subimos para 10px para continuar legível. */
+.compacto .avatar {
+  width: 18px;
+  height: 18px;
+  font-size: 0.68rem;
+}
+
+.compacto .nomeAutor,
+.compacto .tempo {
+  font-size: 0.625rem;
+}
+
+/* ---------- horizontal (410 x 137) ---------- */
+
+.horizontal {
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
+  min-height: 137px;
+  border-radius: 9.9px;
+}
+
+.horizontal .imagem {
+  border-radius: 4.66px;
+}
+
+.horizontal .corpo {
+  gap: 8px;
+  padding: 10px 8px 10px 14px;
+}
+
+.horizontal .titulo {
+  font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.horizontal .botao {
+  padding: 3px 28px;
+  border-radius: 8.3px;
+  font-size: 0.91rem;
+}
+
+@media (max-width: 600px) {
+  .destaque {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 200px auto;
+  }
+
+  .horizontal {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+  }
+}
