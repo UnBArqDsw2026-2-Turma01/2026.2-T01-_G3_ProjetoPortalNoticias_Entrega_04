@@ -5,6 +5,7 @@ import * as agenda from "./AgendaEventos/AgendaEventos.stories";
 import * as badge from "./BadgeCategoria/BadgeCategoria.stories";
 import * as botaoAcao from "./BotaoAcao/BotaoAcao.stories";
 import * as botaoSeguir from "./BotaoSeguir/BotaoSeguir.stories";
+import * as campoFormulario from "./CampoFormulario/CampoFormulario.stories";
 import * as cardComunidade from "./CardComunidade/CardComunidade.stories";
 import * as paginaCategoria from "./PaginaCategoria/PaginaCategoria.stories";
 import * as postCard from "./PostCard/PostCard.stories";
@@ -20,7 +21,7 @@ interface Meta extends Story {
   component: ComponentType<Record<string, unknown>>;
 }
 
-const modulos = { agenda, badge, botaoAcao, botaoSeguir, cardComunidade, paginaCategoria, postCard };
+const modulos = { agenda, badge, botaoAcao, botaoSeguir, campoFormulario, cardComunidade, paginaCategoria, postCard };
 
 const casos = Object.values(modulos).flatMap((modulo) => {
   const { default: meta, ...stories } = modulo as unknown as { default: Meta } & Record<string, Story>;

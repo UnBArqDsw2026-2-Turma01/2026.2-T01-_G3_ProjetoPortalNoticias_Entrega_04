@@ -1,0 +1,81 @@
+/* Campo do formulário de sugestão (Figma 142:1009). Só cores var(--...). */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rotulo {
+  color: var(--cor-texto-sobre-fundo);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.asterisco {
+  color: var(--cor-primaria);
+}
+
+.entrada {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.entrada::placeholder {
+  color: var(--cor-texto-apagado);
+}
+
+.entrada:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 1px;
+}
+
+textarea.entrada {
+  min-height: 120px;
+  line-height: 1.4;
+  resize: vertical;
+}
+
+.comErro {
+  border-color: var(--cor-primaria);
+}
+
+.selecao {
+  position: relative;
+}
+
+.selecao select {
+  appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.seta {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--cor-texto-apagado);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.dica {
+  color: var(--cor-texto-apagado);
+  font-size: 0.75rem;
+}
+
+.erro {
+  color: var(--cor-primaria);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
