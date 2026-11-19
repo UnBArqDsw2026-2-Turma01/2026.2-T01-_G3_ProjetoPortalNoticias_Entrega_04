@@ -1,37 +1,38 @@
-import { caminhoPublico } from "@/lib/caminhos";
+import type { Evento } from "@/components/CardEvento";
 import { repositorioNoticias } from "@/lib/repositorioNoticias";
-import { NOMES_CATEGORIAS } from "@/types/noticia";
-import styles from "./page.module.css";
+import { PaginaInicial } from "./_home/PaginaInicial";
 
-// PÁGINA PROVISÓRIA criada pela vaga 1 só para provar que projeto, dados, repositório e
-// cores funcionam (e que o deploy no GitHub Pages está no ar).
-// A Home de verdade, igual ao Figma, é da vaga 2 e substitui este arquivo.
+// Assuntos do card "Em alta na sua região", na ordem do Figma (Home deslogado mostra os 7).
+const ASSUNTOS_EM_ALTA = [
+  "Arquitetura e Desenho",
+  "Luis no BBB 27",
+  "FCTE evasão de alunos",
+  "Burburinho é o melhor site!",
+  "Falange é um bom nome gamer",
+  "Júlia enfrenta Itachi!",
+  "Milene eleita melhor professora da FCTE",
+] as const;
+
+// Card "Próximo Evento": a feira do Figma é a mesma notícia "Feira Cultural da Praça" dos dados.
+const PROXIMO_EVENTO: Evento = {
+  titulo: "Feira Cultural da Praça",
+  data: "Dom, 14 de out",
+  publicadoHa: "5d",
+  local: "Praça da Sé (SP)",
+  imagemUrl: "/noticias/feira-cultural.jpg",
+  href: "/noticia/feira-cultural-da-praca",
+};
+
+// Home. Esta página NÃO importa a SideBar: ela vem do AppLayout, aplicado no layout.tsx.
+// Roda no build (export estático): busca os dados no repositório e entrega à parte interativa.
 export default function Home() {
-  const noticias = repositorioNoticias.listarTodas();
+  const destaque = repositorioNoticias.listarDestaques()[0];
+  const ultimas = repositorioNoticias
+    .listarRecentes(4)
+    .filter((noticia) => noticia.id !== destaque?.id)
+    .slice(0, 3);
 
   return (
-    <div className={styles.pagina}>
-      <h1 className={styles.titulo}>Burburinho</h1>
-      <p className={styles.aviso}>
-        Página provisória do projeto base (vaga 1). {noticias.length} notícias carregadas pelo
-        repositorioNoticias.
-      </p>
-
-      <ul className={styles.lista}>
-        {noticias.map((noticia) => (
-          <li key={noticia.id} className={styles.card}>
-            {/* eslint-disable-next-line @next/next/no-img-element -- export estático: imagem servida como está */}
-            <img className={styles.imagem} src={caminhoPublico(noticia.imagemUrl)} alt="" />
-            <div className={styles.conteudo}>
-              <span className={styles.badge} style={{ background: `var(--cor-${noticia.categoria})` }}>
-                {NOMES_CATEGORIAS[noticia.categoria]}
-              </span>
-              <h2 className={styles.tituloNoticia}>{noticia.titulo}</h2>
-              <p className={styles.autor}>{noticia.autor}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <PaginaInicial destaque={destaque} ultimas={ultimas} assuntosEmAlta={ASSUNTOS_EM_ALTA} evento={PROXIMO_EVENTO} />
   );
 }
