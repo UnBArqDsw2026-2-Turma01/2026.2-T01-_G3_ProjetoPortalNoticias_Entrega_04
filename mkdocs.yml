@@ -42,10 +42,10 @@ extra:
 nav:
   - Apresentação: index.md
   - Projetos: Projeto/Projeto.md
-  - 1. Desenho de Software (DAS ou Reutilização):
+  - 1. Desenho de Software (Reutilização):
       - 1. Desenho de Software: Base/1.DAS_Reutilizacao.md
       - Relatórios:
-          - 1.1.1. DAS: Base/Relatórios/1.1.1.DAS.md
+          - 1.1.1. Elementos de DAS (Extra): Base/Relatórios/1.1.1.DAS.md
           - 1.1.2. Reutilização: Base/Relatórios/1.1.2.Reutilizacao.md
       - 1.2. Participações: Base/1.2.Participacoes.md
       - 1.3. Iniciativas Extras: Base/1.3.IniciativasExtras.md
