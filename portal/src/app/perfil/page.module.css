@@ -1,0 +1,11 @@
+.pagina { min-height: 100vh; }
+.capa { height: 17.8125rem; padding: 4rem; background: var(--cor-capa-perfil); color: var(--cor-texto-capa); }
+.voltar { font-size: .875rem; }
+.perfil { margin: 0 11% 0 16%; }
+.linha { display: flex; justify-content: space-between; align-items: center; margin-top: -7.5rem; gap: 2rem; }
+.avatar { width: 14.375rem; height: 14.375rem; border-radius: 50%; object-fit: cover; }
+.editar { border: 0; border-radius: 2rem; padding: .75rem 2rem; background: var(--cor-primaria); color: var(--cor-sobre-primaria); font: 400 1.5rem var(--fonte-base); cursor: not-allowed; }
+.perfil h1 { font-size: 2rem; margin-top: 1rem; }
+.detalhe { color: var(--cor-perfil-secundaria); font-size: 1rem; font-weight: 400; margin-top: .375rem; }
+.vazio { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 4.25rem; color: var(--cor-perfil-secundaria); font-size: 1.25rem; font-weight: 400; text-align: center; }
+.voltar:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }

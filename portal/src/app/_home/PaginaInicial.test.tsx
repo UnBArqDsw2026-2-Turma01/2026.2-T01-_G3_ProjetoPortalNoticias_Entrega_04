@@ -42,7 +42,7 @@ describe("Home (PaginaInicial)", () => {
     act(() => definirLogado(true));
     renderizarHome();
 
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/, Johnn!$/);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/, Usuário anônimo!$/);
     expect(screen.getByRole("link", { name: "Meu perfil" })).toHaveAttribute("href", "/perfil");
     expect(screen.queryByRole("button", { name: "Entrar" })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "A5" })).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe("Home (PaginaInicial)", () => {
     renderizarHome();
 
     fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Johnn");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Usuário anônimo");
 
     fireEvent.click(screen.getByRole("button", { name: "Sair" }));
     expect(screen.getByRole("button", { name: "Entrar" })).toBeInTheDocument();
