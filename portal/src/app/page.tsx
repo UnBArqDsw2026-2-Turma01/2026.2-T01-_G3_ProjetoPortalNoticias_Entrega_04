@@ -10,7 +10,7 @@ export default function Home() {
   const noticias = repositorioNoticias.listarTodas();
 
   return (
-    <main className={styles.pagina}>
+    <div className={styles.pagina}>
       <h1 className={styles.titulo}>Burburinho</h1>
       <p className={styles.aviso}>
         Página provisória do projeto base (vaga 1). {noticias.length} notícias carregadas pelo
@@ -32,6 +32,6 @@ export default function Home() {
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { AppLayout } from "@/components/AppLayout";
 import "./globals.css";
 
 // Fonte do protótipo (Inter). A variável --fonte-inter é usada por --fonte-base em globals.css.
@@ -15,13 +16,14 @@ export const metadata: Metadata = {
 };
 
 // Layout raiz: o Next chama este componente e encaixa cada página em {children}.
-// Próximos passos (combinar no grupo, os dois mexem aqui):
-// - vaga 6: envolver tudo com <ThemeProvider>;
-// - vaga 2: envolver {children} com <AppLayout> (SideBar + conteúdo).
+// O AppLayout (vaga 2) coloca a SideBar em todas as rotas, sem nenhuma page.tsx importá-la.
+// Próximo passo (vaga 6): envolver o <AppLayout> com <ThemeProvider>.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        <AppLayout>{children}</AppLayout>
+      </body>
     </html>
   );
 }
