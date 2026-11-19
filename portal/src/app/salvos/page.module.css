@@ -1,0 +1,93 @@
+.pagina {
+  max-width: 1098px;
+  padding: 59px 45px 56px;
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: inherit;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.notificacao {
+  color: var(--marca-salmon);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio-card);
+  color: var(--cor-texto-suave);
+  text-align: center;
+}
+
+.vazio p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 29px;
+}
+
+.botaoSalvar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cor-superficie-destaque);
+  color: var(--cor-texto-suave);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botaoSalvar[aria-pressed="true"] {
+  background: var(--marca-salmon);
+  color: #fff;
+}
+
+.botaoSalvar:hover {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 1200px) {
+  .lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .pagina {
+    padding: 24px 16px 40px;
+  }
+  .lista {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

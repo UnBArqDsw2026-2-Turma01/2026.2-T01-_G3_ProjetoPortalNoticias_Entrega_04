@@ -1,0 +1,117 @@
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.sino {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+}
+
+.sino img {
+  width: 20px;
+  height: 20px;
+}
+
+.contador {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--marca-salmon);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--cor-superficie);
+}
+
+.lista {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 320px;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+  z-index: 50;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vazio {
+  margin: 0;
+  color: var(--cor-texto-apagado);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.itens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.titulo {
+  color: var(--cor-texto);
+  font-size: 0.875rem;
+}
+
+.tempo {
+  color: var(--cor-texto-apagado);
+  font-size: 0.75rem;
+}
+
+.botaoLerTodas {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-badge);
+  background: transparent;
+  color: var(--cor-texto-suave);
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.botaoLerTodas:hover {
+  background: var(--cor-texto-apagado);
+  color: #fff;
+}
+
+/* Fecha a lista ao clicar fora (tratado também no componente App/Home se necessário). */
+@media (max-width: 600px) {
+  .lista {
+    width: 240px;
+    right: -40px;
+  }
+}
