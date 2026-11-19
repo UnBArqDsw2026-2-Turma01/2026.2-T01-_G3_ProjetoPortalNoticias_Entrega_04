@@ -39,7 +39,7 @@ export default function Acessibilidade() {
           <div className={styles.controles}>
             <ToggleModoEscuro selecionar />
             <ControleAcessibilidade rotulo="Modo Claro" descricao="Aplica o tema claro." icone="brilho" tipo="button" ativo={p.tema === "claro"} onClick={() => p.definirTema("claro")} />
-            
+            <ControleAcessibilidade rotulo="Inverter cores" descricao="Inverte as cores do portal." icone="inverter" ativo={p.inverterCores} onClick={() => p.definirInverterCores(!p.inverterCores)} />
             <ControleAcessibilidade rotulo="Brilho" descricao="Reduz o brilho do portal para 80%. Não altera o brilho do dispositivo." icone="brilho" ativo={p.brilhoReduzido} onClick={() => p.definirBrilhoReduzido(!p.brilhoReduzido)} />
             <ControleAcessibilidade rotulo="Contraste" descricao="Usa preto, branco e amarelo para aumentar o contraste." icone="contraste" ativo={p.altoContraste} onClick={() => p.definirAltoContraste(!p.altoContraste)} />
             <ControleAcessibilidade rotulo="Saturação" descricao="Alterna entre as cores originais e tons de cinza." icone="saturacao" ativo={p.semSaturacao} onClick={() => p.definirSemSaturacao(!p.semSaturacao)} />
