@@ -10,49 +10,47 @@
 .banner {
   position: relative;
   overflow: hidden;
-  max-height: 420px;
+  height: 440px;
   border-radius: 0 0 10px 10px;
-  background: var(--cor-banner-explorar);
-  aspect-ratio: 1098 / 420;
+  background: var(--cor-banner-sugerir);
 }
 
 .ilustracao {
   position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: auto;
-  height: 96%;
+  top: 80px;
+  left: 90px;
+  width: 459px;
+  height: 360px;
 }
 
 .tituloBanner {
   position: absolute;
-  top: 50%;
-  right: 8%;
+  top: 50px;
+  left: 58.1%;
   display: flex;
   flex-direction: column;
   color: var(--cor-texto-banner);
   font-weight: 400;
   line-height: 1;
-  transform: translateY(-50%);
 }
 
 .chamada {
-  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-size: 36.5px;
 }
 
 .destaque {
   margin-top: 0.15em;
   font-family: var(--fonte-titulo);
-  font-size: clamp(2.75rem, 6vw, 4.1rem);
+  font-size: 105.3px;
   font-weight: 400;
 }
 
 /* ---------- conteúdo ---------- */
 
 .conteudo {
-  max-width: 780px;
+  max-width: 693px;
   margin: 0 auto;
-  padding: 36px 24px 0;
+  padding: 63px 0 56px;
 }
 
 /* ---------- etapas ---------- */
@@ -89,8 +87,8 @@
 .numero {
   display: grid;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: var(--cor-borda);
   color: var(--cor-sobre-primaria);
@@ -119,8 +117,99 @@
 .formulario {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  margin-top: 44px;
+  gap: 23px;
+  margin-top: 75px;
+}
+
+.upload {
+  display: grid;
+  min-height: 102px;
+  padding: 18px;
+  place-items: center;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  color: var(--cor-texto-apagado);
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.uploadLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--cor-texto-sobre-fundo);
+  font-size: 0.985rem;
+  font-weight: 700;
+}
+
+.uploadConteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  width: 100%;
+}
+
+.uploadPrincipal {
+  color: var(--cor-texto-sobre-fundo);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.uploadDetalhes {
+  color: var(--cor-texto-apagado);
+  font-size: 0.625rem;
+  font-weight: 400;
+}
+
+.confirmacao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+.confirmacao input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--cor-primaria);
+}
+
+.botoesEnvio {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.cancelar {
+  color: var(--cor-primaria);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.106rem;
+  cursor: pointer;
+}
+
+.cancelar:hover {
+  text-decoration: underline;
+}
+
+.upload:hover {
+  border-color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
 
 .acoes {
@@ -177,28 +266,36 @@
 /* ---------- telas menores ---------- */
 
 @media (max-width: 900px) {
-  .banner {
-    aspect-ratio: 1098 / 480;
-  }
-
-  .ilustracao {
-    left: 4%;
-    height: 88%;
-  }
-
   .tituloBanner {
-    right: 6%;
+    left: 58%;
   }
 }
 
 @media (max-width: 600px) {
   .banner {
-    aspect-ratio: 16 / 10;
+    height: auto;
+    aspect-ratio: 5 / 4;
   }
 
   .ilustracao {
-    left: 2%;
-    height: 82%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    height: 78%;
+    opacity: 0.6;
+  }
+
+  .tituloBanner {
+    left: auto;
+    right: 6%;
+  }
+
+  .chamada {
+    font-size: 1rem;
+  }
+
+  .destaque {
+    font-size: clamp(2rem, 10vw, 3rem);
   }
 
   .conteudo {

@@ -2,7 +2,7 @@
 
 .pagina {
   max-width: 1098px;
-  padding: 40px 45px 64px;
+  padding: 44px 62px 64px;
   color: var(--cor-texto-sobre-fundo);
 }
 
@@ -11,12 +11,13 @@
 }
 
 .titulo {
-  max-width: 940px;
-  margin-top: 12px;
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  max-width: 974px;
+  margin-top: 27px;
+  font-size: 35px;
   font-weight: 700;
   line-height: 1.12;
   overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 .meta {
@@ -25,7 +26,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px 32px;
-  margin-top: 24px;
+  margin-top: 34px;
 }
 
 .autor {
@@ -37,8 +38,8 @@
 .avatar {
   display: grid;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: var(--cor-categoria);
   color: var(--cor-sobre-primaria);
@@ -78,9 +79,9 @@
 .imagem {
   position: relative;
   overflow: hidden;
-  margin-top: 28px;
+  margin-top: 38px;
   border-radius: 4px;
-  aspect-ratio: 2.35 / 1;
+  aspect-ratio: 2.59 / 1;
 }
 
 .imagem img {
@@ -124,6 +125,10 @@
 @media (max-width: 600px) {
   .pagina {
     padding: 20px 16px 40px;
+  }
+
+  .titulo {
+    white-space: normal;
   }
 
   .acoes {

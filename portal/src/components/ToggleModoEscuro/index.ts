@@ -1,0 +1,1 @@
+export { ToggleModoEscuro } from "./ToggleModoEscuro";

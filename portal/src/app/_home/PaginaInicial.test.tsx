@@ -66,6 +66,15 @@ describe("Home (PaginaInicial)", () => {
     const secao = screen.getByRole("region", { name: "Últimas notícias" });
     expect(within(secao).getByRole("link", { name: primeira.titulo })).toHaveAttribute("href", `/noticia/${primeira.id}`);
   });
+
+  it("renderiza as capas das notícias com os dados de cada PostCard", () => {
+    const { container } = renderizarHome();
+    const cards = container.querySelectorAll("article");
+    const capas = [...cards].map((card) => card.querySelector("img")).filter((capa): capa is HTMLImageElement => capa !== null);
+
+    expect(capas.length).toBe(4);
+    expect(capas[0]).toHaveAttribute("src", expect.stringContaining("festival-centro.jpg"));
+  });
 });
 
 describe("saudacaoPorHorario", () => {

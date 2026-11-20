@@ -31,6 +31,8 @@ export function PaginaSugerir() {
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [texto, setTexto] = useState("");
+  const [localizacao, setLocalizacao] = useState("");
+  const [confirmado, setConfirmado] = useState(false);
   const [erros, setErros] = useState<Partial<Record<CampoNoticia, string>>>({});
   const [erroGeral, setErroGeral] = useState("");
   const [sugestao, setSugestao] = useState<Noticia | null>(null);
@@ -45,6 +47,18 @@ export function PaginaSugerir() {
       delete proximos[campo];
       return proximos;
     });
+  }
+
+  function cancelar() {
+    setCategoria("");
+    setTitulo("");
+    setAutor("");
+    setTexto("");
+    setLocalizacao("");
+    setConfirmado(false);
+    setConfirmado(false);
+    setErros({});
+    setErroGeral("");
   }
 
   function enviar(evento: FormEvent<HTMLFormElement>) {
@@ -62,6 +76,12 @@ export function PaginaSugerir() {
       if (categoria) builder.comCategoria(categoria as Categoria);
 
       const noticia = builder.construir();
+
+      if (!confirmado) {
+        setErroGeral("Confirme que as informações são verdadeiras antes de enviar.");
+        return;
+      }
+
       repositorioNoticias.adicionarSugestao(noticia);
 
       setSugestao(noticia);
@@ -69,6 +89,7 @@ export function PaginaSugerir() {
       setTitulo("");
       setAutor("");
       setTexto("");
+      setLocalizacao("");
     } catch (erro) {
       if (erro instanceof ErroNoticiaBuilder) {
         setErros({ [erro.campo]: erro.message });
@@ -85,8 +106,8 @@ export function PaginaSugerir() {
           className={styles.ilustracao}
           src={caminhoPublico("/ilustracoes/sugerir-publicacao.svg")}
           alt=""
-          width={640}
-          height={420}
+          width={440}
+          height={384}
           priority
         />
         <h1 className={styles.tituloBanner}>
@@ -200,16 +221,48 @@ export function PaginaSugerir() {
               obrigatorio
             />
 
+            <div className={styles.uploadLabel}>
+              <span>Adicione uma imagem ou vídeo</span>
+              <label className={styles.upload}>
+                <input type="file" accept="image/jpeg,image/png,video/mp4" />
+                <span className={styles.uploadConteudo}>
+                  <span className={styles.uploadPrincipal}>Clique para enviar ou arraste arquivos aqui</span>
+                  <span className={styles.uploadDetalhes}>JPG, PNG ou MP4 · Até 10 MB</span>
+                </span>
+              </label>
+            </div>
+
+            <CampoFormulario
+              rotulo="Localização (opcional)"
+              nome="localizacao"
+              tipo="texto"
+              valor={localizacao}
+              aoMudar={setLocalizacao}
+              placeholder="Ex.: Praça da Liberdade"
+            />
+
+            <label className={styles.confirmacao}>
+              <input
+                type="checkbox"
+                checked={confirmado}
+                onChange={(evento) => setConfirmado(evento.target.checked)}
+              />
+              <span>Confirmo que as informações são verdadeiras</span>
+            </label>
+
             {erroGeral && (
               <p className={styles.erroGeral} role="alert">
                 {erroGeral}
               </p>
             )}
 
-            <div className={styles.acoes}>
+            <div className={styles.botoesEnvio}>
+              <button type="button" className={styles.cancelar} onClick={cancelar}>
+                Cancelar
+              </button>
               <BotaoAcao
                 type="submit"
-                rotulo="Enviar sugestão"
+                rotulo="Enviar para revsão"
                 variante="primario"
                 icone={<IconeEnviar />}
               />

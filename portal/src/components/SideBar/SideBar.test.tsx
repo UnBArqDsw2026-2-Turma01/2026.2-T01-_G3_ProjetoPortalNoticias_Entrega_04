@@ -56,6 +56,20 @@ describe("SideBar", () => {
     expect(screen.queryByRole("link", { name: "Política" })).not.toBeInTheDocument();
   });
 
+  it("limita Meus Conteúdos às três categorias visíveis do Figma", () => {
+    render(
+      <SideBar
+        logado
+        categoriasSeguidas={["esporte", "cultura", "politica", "tecnologia"]}
+      />,
+    );
+
+    expect(screen.getByText("Esporte")).toBeInTheDocument();
+    expect(screen.getByText("Cultura")).toBeInTheDocument();
+    expect(screen.getByText("Política")).toBeInTheDocument();
+    expect(screen.queryByText("Tecnologia")).not.toBeInTheDocument();
+  });
+
   it("acompanha o login simulado quando a prop logado não é passada", () => {
     render(<SideBar />);
     expect(screen.queryByText("Meus Conteúdos")).not.toBeInTheDocument();
