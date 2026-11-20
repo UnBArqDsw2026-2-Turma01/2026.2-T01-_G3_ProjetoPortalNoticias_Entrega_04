@@ -1,0 +1,56 @@
+.pagina {
+  max-width: 1098px;
+  padding: 59px 45px 56px;
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.cabecalho {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: inherit;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.contagem {
+  color: var(--cor-texto-apagado);
+  font-size: 0.875rem;
+}
+
+.vazio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio-card);
+  color: var(--cor-texto-suave);
+  text-align: center;
+}
+
+.vazio p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+}
+
+@media (max-width: 600px) {
+  .pagina {
+    padding: 24px 16px 40px;
+  }
+}

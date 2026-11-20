@@ -15,9 +15,46 @@ npm run dev      # http://localhost:3000
 npm test         # testes (Vitest)
 npm run lint     # padrões de código
 npm run build    # gera o site estático em portal/out
+npm run storybook       # http://localhost:6006
+npm run build-storybook # gera o catálogo estático
 ```
 
-Precisa de **Node.js 20 ou superior** (o CI usa o 24).
+Para o Storybook, use **Node.js 20.19+ ou 22.12+** (o CI usa o 24).
+
+## Como escrever uma story
+
+Crie `Nome/Nome.stories.tsx` ao lado do componente. O catálogo usa as pastas
+`Layout/`, `Conteúdo/`, `Formulário/`, `Interação/` e `Tema/`; escolha uma no
+`title`. Cada exportação nomeada é um exemplo. O Autodocs é habilitado
+globalmente e gera a página **Docs** e a tabela de props. Exemplo:
+
+```tsx
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { BadgeCategoria } from "./BadgeCategoria";
+
+const meta = {
+  title: "Conteúdo/BadgeCategoria",
+  component: BadgeCategoria,
+  tags: ["autodocs"],
+} satisfies Meta<typeof BadgeCategoria>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Cultura: Story = { args: { categoria: "cultura" } };
+export const Esporte: Story = { args: { categoria: "esporte" } };
+```
+
+Rode `npm run storybook`, confira **Docs**, os controles e as variantes no
+navegador e execute `npm run build-storybook`. O seletor **Tema** na barra
+fornece o `ThemeProvider`; não envolva a story em outro provider de tema.
+Para imagens de `public/`, use `caminhoPublico` como no portal. No Pages, o
+workflow configura o caminho específico `/storybook` para os assets.
+As categorias sem stories ainda não aparecem no menu.
+
+O Storybook atual recomenda [`@storybook/nextjs-vite`](https://storybook.js.org/docs/get-started/frameworks/nextjs-vite),
+em vez do pacote Webpack `@storybook/nextjs` dos exemplos antigos. O catálogo
+será publicado [aqui](https://unbarqdsw2026-2-turma01.github.io/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/storybook/)
+após o merge e a execução bem-sucedida do workflow de Pages.
 
 ## Estrutura de pastas
 

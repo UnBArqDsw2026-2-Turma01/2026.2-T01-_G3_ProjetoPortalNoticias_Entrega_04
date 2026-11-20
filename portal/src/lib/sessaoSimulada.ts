@@ -10,7 +10,7 @@ export interface UsuarioExemplo {
 }
 
 export const USUARIO_EXEMPLO: UsuarioExemplo = {
-  nome: "Johnn",
+  nome: "Usuário anônimo",
   categoriasSeguidas: ["esporte", "cultura", "politica"],
 };
 

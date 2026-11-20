@@ -11,11 +11,8 @@ const inter = Inter({
   weight: ["400", "600", "700"],
 });
 
-// Títulos dos banners (vaga 3). Carregada aqui porque next/font não funciona nos testes do Vitest.
-const leagueGothic = League_Gothic({
-  variable: "--fonte-league-gothic",
-  subsets: ["latin"],
-});
+const leagueGothic = League_Gothic({ variable: "--fonte-league-gothic", subsets: ["latin"], weight: "400" });
+const leagueSpartan = League_Spartan({ variable: "--fonte-league-spartan", subsets: ["latin"], weight: "600" });
 
 const leagueSpartan = League_Spartan({
   variable: "--fonte-league-spartan",

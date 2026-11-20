@@ -55,10 +55,11 @@ jobs:
         run: cp -r portal/out site/portal
 
       # ---------- Storybook (publicado em /storybook) ----------
-      # Vaga 7 (#7): depois de configurar o Storybook, descomente o passo abaixo.
-      # - name: Build Storybook
-      #   working-directory: portal
-      #   run: npm run build-storybook -- -o ../site/storybook
+      - name: Build Storybook
+        working-directory: portal
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}/storybook
+        run: npm run build-storybook -- -o ../site/storybook
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
