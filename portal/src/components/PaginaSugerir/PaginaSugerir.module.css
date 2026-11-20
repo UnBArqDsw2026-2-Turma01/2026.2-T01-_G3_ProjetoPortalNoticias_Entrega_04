@@ -1,0 +1,319 @@
+/* Sugerir Publicação (Figma 142:1009 e 280:2147). Só cores var(--...). */
+
+.pagina {
+  padding-bottom: 56px;
+  color: var(--cor-texto-sobre-fundo);
+}
+
+/* ---------- banner ---------- */
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  height: 440px;
+  border-radius: 0 0 10px 10px;
+  background: var(--cor-banner-sugerir);
+}
+
+.ilustracao {
+  position: absolute;
+  top: 80px;
+  left: 90px;
+  width: 459px;
+  height: 360px;
+}
+
+.tituloBanner {
+  position: absolute;
+  top: 50px;
+  left: 58.1%;
+  display: flex;
+  flex-direction: column;
+  color: var(--cor-texto-banner);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.chamada {
+  font-size: 36.5px;
+}
+
+.destaque {
+  margin-top: 0.15em;
+  font-family: var(--fonte-titulo);
+  font-size: 105.3px;
+  font-weight: 400;
+}
+
+/* ---------- conteúdo ---------- */
+
+.conteudo {
+  max-width: 693px;
+  margin: 0 auto;
+  padding: 63px 0 56px;
+}
+
+/* ---------- etapas ---------- */
+
+.etapas {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.etapa {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+}
+
+.etapa:last-child {
+  flex: 0 0 auto;
+}
+
+.etapa:not(:last-child)::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  margin: 0 14px;
+  background: var(--cor-borda);
+}
+
+.etapa[data-estado="concluida"]:not(:last-child)::after {
+  background: var(--cor-primaria);
+}
+
+.numero {
+  display: grid;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cor-borda);
+  color: var(--cor-sobre-primaria);
+  font-size: 0.8rem;
+  place-items: center;
+}
+
+.etapa[data-estado="atual"] .numero,
+.etapa[data-estado="concluida"] .numero {
+  background: var(--cor-primaria);
+}
+
+.rotuloEtapa {
+  color: var(--cor-texto-sobre-fundo);
+  font-size: 0.75rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.etapa[data-estado="atual"] .rotuloEtapa {
+  font-weight: 700;
+}
+
+/* ---------- formulário ---------- */
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  margin-top: 75px;
+}
+
+.upload {
+  display: grid;
+  min-height: 102px;
+  padding: 18px;
+  place-items: center;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  color: var(--cor-texto-apagado);
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.uploadLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--cor-texto-sobre-fundo);
+  font-size: 0.985rem;
+  font-weight: 700;
+}
+
+.uploadConteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  width: 100%;
+}
+
+.uploadPrincipal {
+  color: var(--cor-texto-sobre-fundo);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.uploadDetalhes {
+  color: var(--cor-texto-apagado);
+  font-size: 0.625rem;
+  font-weight: 400;
+}
+
+.confirmacao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+.confirmacao input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--cor-primaria);
+}
+
+.botoesEnvio {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.cancelar {
+  color: var(--cor-primaria);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.106rem;
+  cursor: pointer;
+}
+
+.cancelar:hover {
+  text-decoration: underline;
+}
+
+.upload:hover {
+  border-color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-fundo);
+}
+
+.upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.erroGeral {
+  color: var(--cor-primaria);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* ---------- sucesso ---------- */
+
+.sucesso {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 44px;
+}
+
+.tituloSucesso {
+  color: var(--cor-primaria);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.textoSucesso {
+  max-width: 60ch;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.nota {
+  max-width: 60ch;
+  color: var(--cor-texto-apagado);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.tituloPrevia {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.previa {
+  width: 100%;
+  max-width: 598px;
+  margin-bottom: 8px;
+}
+
+/* ---------- telas menores ---------- */
+
+@media (max-width: 1100px) {
+  .banner {
+    height: clamp(300px, 48vw, 360px);
+  }
+
+  .ilustracao {
+    top: auto;
+    bottom: 0;
+    left: 4%;
+    width: 46%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .tituloBanner {
+    top: 50%;
+    right: 6%;
+    left: auto;
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    height: clamp(260px, 80vw, 320px);
+  }
+
+  .tituloBanner {
+    right: 5%;
+  }
+
+  .chamada {
+    font-size: 1rem;
+  }
+
+  .destaque {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .conteudo {
+    padding: 28px 16px 0;
+  }
+
+  .rotuloEtapa {
+    display: none;
+  }
+
+  .etapa:not(:last-child)::after {
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,1 @@
+export { PaginaSugerir } from "./PaginaSugerir";

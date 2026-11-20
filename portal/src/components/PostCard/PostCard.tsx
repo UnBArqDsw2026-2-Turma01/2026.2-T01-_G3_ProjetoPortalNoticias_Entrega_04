@@ -18,6 +18,8 @@ export interface PostCardProps {
   mostrarResumo?: boolean;
   /** Botões de outras vagas (ex.: Salvar, vaga 5). */
   acoes?: ReactNode;
+  /** Destino do card. Padrão: a página da notícia. `null` deixa o título sem link (prévia). */
+  href?: string | null;
 }
 
 const TAMANHOS_IMAGEM: Record<VariantePostCard, string> = {
@@ -28,10 +30,10 @@ const TAMANHOS_IMAGEM: Record<VariantePostCard, string> = {
 
 // O link do título cobre o card inteiro (::after no CSS), para os botões de `acoes`
 // não ficarem dentro de um <a>.
-export function PostCard({ noticia, variante = "compacto", mostrarResumo, acoes }: PostCardProps) {
+export function PostCard({ noticia, variante = "compacto", mostrarResumo, acoes, href }: PostCardProps) {
   const tema = FabricaCategoria.para(noticia.categoria).criarTema();
   const exibirResumo = mostrarResumo ?? variante === "destaque";
-  const href = `/noticia/${noticia.id}`;
+  const destino = href === undefined ? `/noticia/${noticia.id}` : href;
 
   return (
     <article className={`${styles.card} ${styles[variante]}`} style={tema.estilo()}>
@@ -50,9 +52,13 @@ export function PostCard({ noticia, variante = "compacto", mostrarResumo, acoes 
         </div>
 
         <h3 className={styles.titulo}>
-          <Link href={href} className={styles.link}>
-            {noticia.titulo}
-          </Link>
+          {destino ? (
+            <Link href={destino} className={styles.link}>
+              {noticia.titulo}
+            </Link>
+          ) : (
+            noticia.titulo
+          )}
         </h3>
 
         {exibirResumo && <p className={styles.resumo}>{noticia.resumo}</p>}
@@ -68,7 +74,7 @@ export function PostCard({ noticia, variante = "compacto", mostrarResumo, acoes 
               <TempoPublicacao iso={noticia.publicadaEm} className={styles.tempo} />
             </span>
           )}
-          {variante !== "compacto" && (
+          {variante !== "compacto" && destino && (
             <span className={styles.botao} aria-hidden="true">
               {variante === "destaque" ? "Ler Notícia" : "Ler Mais"}
             </span>
