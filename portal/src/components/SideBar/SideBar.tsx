@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCategoriasSeguidas } from "@/hooks/useCategoriasSeguidas";
 import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
+import { LogoTema } from "@/components/LogoTema";
 import { caminhoPublico } from "@/lib/caminhos";
 import { NOMES_CATEGORIAS, type Categoria } from "@/types/noticia";
 import { ICONES_CATEGORIA, ITENS_MENU, itemAtivoPelaRota, type IdItemMenu } from "./itensMenu";
@@ -34,7 +35,7 @@ export function SideBar({ itemAtivo, logado, categoriasSeguidas }: SideBarProps)
   return (
     <aside className={styles.sidebar}>
       <Link href="/" className={styles.logo} aria-label="Burburinho: página inicial">
-        <Image src={caminhoPublico("/logos/burburinho.svg")} alt="Burburinho" width={296} height={191} priority />
+        <LogoTema />
       </Link>
 
       <nav aria-label="Menu principal">

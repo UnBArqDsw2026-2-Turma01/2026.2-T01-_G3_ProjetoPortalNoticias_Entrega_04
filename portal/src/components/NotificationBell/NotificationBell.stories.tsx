@@ -14,11 +14,8 @@ function altura(px: number) {
   };
 }
 
-export const SemNotificacoes = {
+export const Padrao = {
   decorators: [altura(200)],
-  parameters: {
-    // Sobrescreve o hook para não haver notificações
-  },
 };
 
 export const ComTresNaoLidas = {

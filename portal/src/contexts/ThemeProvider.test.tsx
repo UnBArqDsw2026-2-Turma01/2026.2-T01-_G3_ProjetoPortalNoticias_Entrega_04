@@ -72,6 +72,15 @@ describe("ThemeProvider", () => {
     expect(document.documentElement).toHaveAttribute("data-tema", "escuro");
   });
 
+  it("tema inicial do catálogo prevalece sobre a preferência salva, mas permite alternar", () => {
+    localStorage.setItem(CHAVE, JSON.stringify({ tema: "claro", fonte: "grande" }));
+    render(<ThemeProvider temaInicial="escuro"><ToggleModoEscuro /></ThemeProvider>);
+    expect(document.documentElement).toHaveAttribute("data-tema", "escuro");
+    expect(document.documentElement).toHaveAttribute("data-fonte", "grande");
+    fireEvent.click(screen.getByRole("switch", { name: "Modo Escuro" }));
+    expect(document.documentElement).toHaveAttribute("data-tema", "claro");
+  });
+
   it("persiste a escolha e recupera ao remontar, com prioridade sobre o sistema", () => {
     const { unmount } = montar();
     fireEvent.click(screen.getByRole("switch", { name: "Modo Escuro" }));
