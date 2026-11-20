@@ -14,12 +14,6 @@ const inter = Inter({
 const leagueGothic = League_Gothic({ variable: "--fonte-league-gothic", subsets: ["latin"], weight: "400" });
 const leagueSpartan = League_Spartan({ variable: "--fonte-league-spartan", subsets: ["latin"], weight: "600" });
 
-const leagueSpartan = League_Spartan({
-  variable: "--fonte-league-spartan",
-  subsets: ["latin"],
-  weight: "600",
-});
-
 export const metadata: Metadata = {
   title: "Burburinho: Portal de Notícias",
   description: "Portal de notícias com conteúdo jornalístico e contribuições dos leitores (Grupo 3, Arquitetura e Desenho de Software).",

@@ -8,11 +8,8 @@ import { NotificationBell } from "@/components/NotificationBell";
 import { CardEmAlta } from "@/components/CardEmAlta";
 import { CardEvento, type Evento } from "@/components/CardEvento";
 import { PostCard } from "@/components/PostCard";
-import { NotificationBell } from "@/components/NotificationBell";
-import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
 import { caminhoPublico } from "@/lib/caminhos";
 import type { Noticia } from "@/types/noticia";
-import { Marcador } from "./Marcador";
 import { saudacaoPorHorario } from "./saudacao";
 import styles from "./PaginaInicial.module.css";
 
