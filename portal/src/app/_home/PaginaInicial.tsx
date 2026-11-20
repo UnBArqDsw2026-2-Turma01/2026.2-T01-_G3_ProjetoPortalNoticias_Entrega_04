@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CardEmAlta } from "@/components/CardEmAlta";
 import { CardEvento, type Evento } from "@/components/CardEvento";
 import { PostCard } from "@/components/PostCard";
+import { NotificationBell } from "@/components/NotificationBell";
 import { useSessaoSimulada } from "@/hooks/useSessaoSimulada";
 import { caminhoPublico } from "@/lib/caminhos";
 import type { Noticia } from "@/types/noticia";
@@ -43,8 +44,7 @@ export function PaginaInicial({ destaque, ultimas, assuntosEmAlta, evento }: Pag
 
           {logado ? (
             <>
-              {/* TODO vaga 5 (#5): trocar pelo <NotificationBell /> */}
-              <Marcador componente="NotificationBell" />
+              <NotificationBell />
               <Link href="/perfil" className={styles.avatar} aria-label="Meu perfil">
                 <Image src={caminhoPublico("/perfil/johnn.png")} alt="" width={60} height={60} />
               </Link>
