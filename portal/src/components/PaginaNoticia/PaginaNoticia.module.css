@@ -13,11 +13,10 @@
 .titulo {
   max-width: 974px;
   margin-top: 27px;
-  font-size: 35px;
+  font-size: clamp(1.75rem, 3.2vw, 35px);
   font-weight: 700;
   line-height: 1.12;
   overflow-wrap: anywhere;
-  white-space: nowrap;
 }
 
 .meta {
