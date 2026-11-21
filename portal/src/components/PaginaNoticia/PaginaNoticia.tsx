@@ -55,7 +55,7 @@ export function PaginaNoticia({ noticia }: PaginaNoticiaProps) {
     }
   }
 
-  // Compartilha a persistência com a página Salvos.
+  // useSalvos (vaga 5) persiste no localStorage, e a notícia aparece em /salvos.
   function alternarSalvo() {
     alternar(noticia.id);
     setAviso(salvo ? "Notícia removida dos salvos." : "Notícia salva.");

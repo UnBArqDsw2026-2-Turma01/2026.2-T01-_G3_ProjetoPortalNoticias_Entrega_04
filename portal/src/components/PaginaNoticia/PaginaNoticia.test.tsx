@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { repositorioNoticias } from "@/lib/repositorioNoticias";
 import { PaginaNoticia } from "./PaginaNoticia";
 
@@ -10,6 +10,7 @@ vi.mock("next/navigation", () => ({
 const noticia = repositorioNoticias.buscarPorId("festival-de-rua-movimenta-o-centro")!;
 
 describe("PaginaNoticia", () => {
+  beforeEach(() => window.localStorage.clear());
   afterEach(cleanup);
 
   it("mostra o título, o autor, a categoria e todos os parágrafos", () => {
@@ -31,6 +32,17 @@ describe("PaginaNoticia", () => {
 
     fireEvent.click(salvar);
 
+    expect(screen.getByRole("button", { name: "Salvo" })).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("persiste o Salvar com useSalvos para a notícia aparecer em /salvos", () => {
+    render(<PaginaNoticia noticia={noticia} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Salvar" }));
+    expect(JSON.parse(window.localStorage.getItem("burburinho:salvos") ?? "[]")).toEqual([noticia.id]);
+
+    cleanup();
+    render(<PaginaNoticia noticia={noticia} />);
     expect(screen.getByRole("button", { name: "Salvo" })).toHaveAttribute("aria-pressed", "true");
   });
 
