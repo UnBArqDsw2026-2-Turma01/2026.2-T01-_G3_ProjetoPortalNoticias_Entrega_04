@@ -1,6 +1,5 @@
-import { createElement, type CSSProperties, type ReactNode } from "react";
-import { AgendaEventos } from "@/components/AgendaEventos";
-import { eventosCulturais } from "@/data/eventos";
+import type { CSSProperties } from "react";
+import { eventosCulturais, type EventoCultural } from "@/data/eventos";
 import { CATEGORIAS, NOMES_CATEGORIAS, type Categoria } from "@/types/noticia";
 
 // Abstract Factory (GoF criacional) reaproveitado da Entrega 03: cada categoria é uma família
@@ -38,20 +37,25 @@ export interface ApresentacaoCategoria {
 }
 
 /** Produto 3: seção própria da categoria, com comportamento diferente em cada família. */
+// A interface fornece a renderização; o padrão não importa componentes concretos.
+export interface RenderizadorSecao<T> {
+  eventos: (eventos: readonly EventoCultural[]) => T;
+}
+
 export abstract class SecaoCategoria {
-  abstract renderizar(): ReactNode;
+  abstract renderizar<T>(renderizador: RenderizadorSecao<T>): T | null;
 }
 
 /** Cultura: bloco "Eventos" do Figma. */
 export class SecaoEventos extends SecaoCategoria {
-  renderizar(): ReactNode {
-    return createElement(AgendaEventos, { eventos: eventosCulturais });
+  renderizar<T>(renderizador: RenderizadorSecao<T>): T {
+    return renderizador.eventos(eventosCulturais);
   }
 }
 
 /** Política, Esporte e Tecnologia não têm seção própria no Figma (Null Object: não desenha nada). */
 export class SecaoVazia extends SecaoCategoria {
-  renderizar(): ReactNode {
+  renderizar(): null {
     return null;
   }
 }

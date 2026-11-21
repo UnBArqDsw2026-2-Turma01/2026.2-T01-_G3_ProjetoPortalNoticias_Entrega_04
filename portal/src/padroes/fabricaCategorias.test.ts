@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { CATEGORIAS, NOMES_CATEGORIAS, type Categoria } from "@/types/noticia";
 import { ehCategoria, FabricaCategoria, SecaoEventos, SecaoVazia, TemaCategoria } from "./fabricaCategorias";
 
@@ -23,12 +23,16 @@ describe("FabricaCategoria (Abstract Factory)", () => {
 
   it("a seção própria muda de comportamento conforme a família", () => {
     expect(FabricaCategoria.para("cultura").criarSecao()).toBeInstanceOf(SecaoEventos);
-    expect(FabricaCategoria.para("cultura").criarSecao().renderizar()).not.toBeNull();
+    const renderizador = { eventos: vi.fn(() => "agenda renderizada") };
+    expect(FabricaCategoria.para("cultura").criarSecao().renderizar(renderizador)).toBe("agenda renderizada");
+    expect(renderizador.eventos).toHaveBeenCalledOnce();
+    renderizador.eventos.mockClear();
 
     for (const categoria of ["politica", "esporte", "tecnologia"] as const) {
       const secao = FabricaCategoria.para(categoria).criarSecao();
       expect(secao).toBeInstanceOf(SecaoVazia);
-      expect(secao.renderizar()).toBeNull();
+      expect(secao.renderizar(renderizador)).toBeNull();
+      expect(renderizador.eventos).not.toHaveBeenCalled();
     }
   });
 

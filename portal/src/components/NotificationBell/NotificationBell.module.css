@@ -7,6 +7,9 @@
 }
 
 .sino {
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -108,7 +111,7 @@
   color: #fff;
 }
 
-/* Fecha a lista ao clicar fora (tratado também no componente App/Home se necessário). */
+/* A lista é fechada pelo botão do sino ou pela tecla Escape. */
 @media (max-width: 600px) {
   .lista {
     width: 240px;

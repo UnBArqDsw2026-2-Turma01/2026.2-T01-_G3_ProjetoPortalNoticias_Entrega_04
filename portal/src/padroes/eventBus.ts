@@ -1,35 +1,35 @@
-// EventBus enxuto (Observador da Entrega 03, versão front-end apenas).
-// Permite que partes desconhecidas do portal se comuniquem sem depender umas das outras.
-// Eventos previstos: 'noticia-publicada', 'sugestao-enviada'.
-type Callback<Dados = unknown> = (dados: Dados) => void;
+// Observer local: uma falha de um assinante não interrompe os demais.
+// publicar mantém o contrato void; assinantes assíncronos não bloqueiam o produtor.
+type Callback<Dados = unknown> = (dados: Dados) => void | Promise<void>;
+const handlers = new Map<string, Set<Callback>>();
 
-const handlers: Record<string, Set<Callback>> = {};
-
-export function assinar<Dados = unknown>(
-  evento: string,
-  callback: Callback<Dados>,
-): () => void {
-  if (!handlers[evento]) handlers[evento] = new Set();
-  handlers[evento].add(callback as Callback);
-
-  return () => {
-    const set = handlers[evento];
-    if (!set) return;
-    set.delete(callback as Callback);
-    if (set.size === 0) delete handlers[evento];
-  };
+export function assinar<Dados = unknown>(evento: string, callback: Callback<Dados>): () => void {
+  let inscritos = handlers.get(evento);
+  if (!inscritos) {
+    inscritos = new Set();
+    handlers.set(evento, inscritos);
+  }
+  inscritos.add(callback as Callback);
+  return () => cancelar(evento, callback as Callback);
 }
 
 export function publicar<Dados = unknown>(evento: string, dados: Dados): void {
-  const set = handlers[evento];
-  if (!set) return;
-  // Cópia para que um cancelar() durante a iteração não estrague o loop.
-  for (const callback of [...set]) callback(dados);
+  const inscritos = handlers.get(evento);
+  if (!inscritos) return;
+  const relatarFalha = (erro: unknown) => console.error(`[EventBus] Falha no evento "${evento}"`, erro);
+  // A cópia mantém estável a entrega atual se um assinante cancelar outro.
+  for (const callback of [...inscritos]) {
+    try {
+      void Promise.resolve(callback(dados)).catch(relatarFalha);
+    } catch (erro) {
+      relatarFalha(erro);
+    }
+  }
 }
 
 export function cancelar(evento: string, callback: Callback): void {
-  const set = handlers[evento];
-  if (!set) return;
-  set.delete(callback as Callback);
-  if (set.size === 0) delete handlers[evento];
+  const inscritos = handlers.get(evento);
+  if (!inscritos) return;
+  inscritos.delete(callback);
+  if (inscritos.size === 0) handlers.delete(evento);
 }
