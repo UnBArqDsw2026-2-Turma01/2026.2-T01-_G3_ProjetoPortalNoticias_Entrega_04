@@ -920,10 +920,6 @@
 <p class="admonition-title">Escopo desta página</p>
 <p>A entrega mínima do Grupo 3 é a de <strong>Reutilização</strong> (<a href="../1.1.2.Reutilizacao/">1.1.2</a>). Esta página é uma <strong>iniciativa extra</strong>: apresenta duas visões arquiteturais (<strong>Visão Lógica</strong> e <strong>Visão de Componentes</strong>) do <strong>mesmo código</strong> do portal, para mostrar como a reutilização se organiza na arquitetura. <strong>Não é um DAS completo</strong> segundo o <a href="https://www.dca.ufrn.br/~anderson/FTP/dca0120/modelodocarquiteturasoftware.doc">template adotado na disciplina</a>; as demais seções do template não foram elaboradas.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Versão preliminar (19/11/2026)</p>
-<p>Os diagramas refletem o código que já existe: o <code>main</code> (projeto base da vaga 1) mais a branch da vaga 2. Os pacotes <code>contexts</code> e <code>padroes</code> e os componentes das vagas 3 a 7 ainda não estão no <code>main</code>; aparecem tracejados ou citados em nota. Os diagramas serão atualizados depois do congelamento do código, em 21/11.</p>
-</div>
 <h2 id="participantes">Participantes</h2>
 <table>
 <thead>
@@ -940,15 +936,15 @@
 </tbody>
 </table>
 <h2 id="representacao-arquitetural">Representação Arquitetural</h2>
-<p>O portal é uma aplicação <strong>Next.js</strong> (React + TypeScript) cujo código fica em <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/tree/main/portal/src"><code>portal/src</code></a>, organizado em pacotes (pastas) com responsabilidades separadas:</p>
+<p>O portal é uma aplicação <strong>Next.js</strong> (React + TypeScript) cujo código fica em <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/tree/main/portal/src">portal/src</a>, organizado em pacotes (pastas) com responsabilidades separadas:</p>
 <ul>
-<li><code>app</code> contém as rotas, os <em>hot spots</em> que o framework chama (<code>layout.tsx</code>, <code>page.tsx</code>);</li>
-<li><code>components</code> contém os componentes reutilizáveis de interface;</li>
-<li><code>hooks</code> e <code>contexts</code> contêm a lógica reutilizável que os componentes consomem;</li>
-<li><code>lib</code> e <code>padroes</code> contêm a lógica sem interface, incluindo os GoFs reaproveitados da Entrega 03;</li>
-<li><code>data</code> e <code>types</code> contêm os dados de exemplo e os contratos compartilhados (<code>Noticia</code>, <code>Categoria</code>).</li>
+<li>app contém as rotas, os <em>hot spots</em> que o framework chama (layout.tsx, page.tsx);</li>
+<li>components contém os componentes reutilizáveis de interface;</li>
+<li>hooks e contexts contêm a lógica reutilizável que os componentes consomem;</li>
+<li>lib e padroes contêm a lógica sem interface, incluindo os GoFs reaproveitados da Entrega 03;</li>
+<li>data e types contêm os dados de exemplo e os contratos compartilhados (Noticia, Categoria).</li>
 </ul>
-<p>A <strong>regra de dependência</strong> é que as importações só "descem": páginas usam componentes, componentes usam hooks, hooks usam <code>lib</code>, e <code>lib</code> usa <code>data</code> e <code>types</code>. Nenhum pacote de baixo importa um de cima. É isso que permite reutilizar um componente em outra tela sem levar junto a página que o usa.</p>
+<p>A <strong>regra de dependência</strong> é que as importações só "descem": páginas usam componentes, componentes usam hooks, hooks usam lib, e lib usa data e types. Nenhum pacote de baixo importa um de cima. É isso que permite reutilizar um componente em outra tela sem levar junto a página que o usa.</p>
 <h2 id="visao-logica-diagrama-de-pacotes">Visão Lógica: Diagrama de Pacotes</h2>
 <p><img alt="Diagrama de Pacotes UML do portal" src="../../../assets/diagramas/pacotes.png" /></p>
 <figcaption>
@@ -957,8 +953,8 @@
     </p>
 </figcaption>
 
-<p>Fonte editável: <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/docs/assets/diagramas/pacotes.drawio"><code>pacotes.drawio</code></a>. Notação UML: pacote com aba; dependência tracejada com seta aberta, <code>«import»</code> entre pacotes do projeto e <code>«use»</code> para o framework.</p>
-<p>As setas foram levantadas a partir das linhas <code>import</code> de cada pasta, desconsiderando os arquivos de teste (<code>*.test.ts(x)</code>).</p>
+<p>Fonte editável: <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/docs/assets/diagramas/pacotes.drawio">pacotes.drawio</a>. Notação UML: pacote com aba; dependência tracejada com seta aberta, «import» entre pacotes do projeto e «use» para o framework.</p>
+<p>As setas foram levantadas a partir das linhas import de cada pasta, desconsiderando os arquivos de teste (*.test.ts(x)).</p>
 <table>
 <thead>
 <tr>
@@ -969,42 +965,42 @@
 </thead>
 <tbody>
 <tr>
-<td><code>app</code></td>
-<td>Rotas e páginas: <code>layout.tsx</code> (aplica o <code>AppLayout</code>), <code>page.tsx</code> (Home) e <code>_home/</code> (parte interativa da Home)</td>
-<td><code>components</code>, <code>hooks</code>, <code>lib</code>, <code>types</code>, <code>next</code>, <code>react</code></td>
+<td>app</td>
+<td>Rotas e páginas: layout.tsx (aplica o AppLayout), page.tsx (Home) e _home/ (parte interativa da Home)</td>
+<td>components, hooks, lib, types, next, react</td>
 </tr>
 <tr>
-<td><code>components</code></td>
-<td>Componentes reutilizáveis de interface (<code>AppLayout</code>, <code>SideBar</code>, <code>CardEmAlta</code>, <code>CardEvento</code>)</td>
-<td><code>hooks</code>, <code>lib</code>, <code>types</code>, <code>next</code>, <code>react</code></td>
+<td>components</td>
+<td>Componentes reutilizáveis de interface (AppLayout, SideBar, CardEmAlta, CardEvento)</td>
+<td>hooks, lib, types, next, react</td>
 </tr>
 <tr>
-<td><code>hooks</code></td>
-<td>Lógica reutilizável com estado do React (<code>useSessaoSimulada</code>)</td>
-<td><code>lib</code>, <code>react</code></td>
+<td>hooks</td>
+<td>Lógica reutilizável com estado do React (useSessaoSimulada)</td>
+<td>lib, react</td>
 </tr>
 <tr>
-<td><code>lib</code></td>
-<td>Lógica sem interface: <code>repositorioNoticias</code> (Singleton), <code>sessaoSimulada</code>, <code>caminhos</code></td>
-<td><code>data</code>, <code>types</code></td>
+<td>lib</td>
+<td>Lógica sem interface: repositorioNoticias (Singleton), sessaoSimulada, caminhos</td>
+<td>data, types</td>
 </tr>
 <tr>
-<td><code>data</code></td>
-<td>Dados de exemplo (<code>noticias.ts</code>)</td>
-<td><code>types</code></td>
+<td>data</td>
+<td>Dados de exemplo (noticias.ts)</td>
+<td>types</td>
 </tr>
 <tr>
-<td><code>types</code></td>
-<td>Contrato compartilhado (<code>Noticia</code>, <code>Categoria</code>, <code>NOMES_CATEGORIAS</code>)</td>
+<td>types</td>
+<td>Contrato compartilhado (Noticia, Categoria, NOMES_CATEGORIAS)</td>
 <td>nenhum</td>
 </tr>
 <tr>
-<td><code>contexts</code></td>
-<td><code>ThemeProvider</code> (vaga 6)</td>
+<td>contexts</td>
+<td>ThemeProvider (vaga 6)</td>
 <td>ainda vazio</td>
 </tr>
 <tr>
-<td><code>padroes</code></td>
+<td>padroes</td>
 <td>GoFs da Entrega 03 adaptados (vagas 3 a 5)</td>
 <td>ainda vazio</td>
 </tr>
@@ -1012,8 +1008,8 @@
 </table>
 <p><strong>Senso crítico:</strong> não há dependência que "suba" nem ciclo entre pacotes. Dois pontos merecem atenção:</p>
 <ol>
-<li><strong><code>app</code> importa <code>hooks</code> diretamente.</strong> A Home usa <code>useSessaoSimulada</code> em <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/_home/PaginaInicial.tsx"><code>_home/PaginaInicial.tsx</code></a>. Não viola a regra, já que as dependências continuam descendo, mas mostra que parte da lógica de tela ficou na rota e não em um componente.</li>
-<li><strong>Os pacotes <code>lib</code> e <code>types</code> são os mais usados.</strong> Uma mudança no contrato <code>Noticia</code> afeta o portal inteiro. O custo é aceitável justamente porque o contrato é estável e foi combinado no início do projeto (issue #1).</li>
+<li><strong>app importa hooks diretamente.</strong> A Home usa useSessaoSimulada em <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/_home/PaginaInicial.tsx">_home/PaginaInicial.tsx</a>. Não viola a regra, já que as dependências continuam descendo, mas mostra que parte da lógica de tela ficou na rota e não em um componente.</li>
+<li><strong>Os pacotes lib e types são os mais usados.</strong> Uma mudança no contrato Noticia afeta o portal inteiro. O custo é aceitável justamente porque o contrato é estável e foi combinado no início do projeto (issue #1).</li>
 </ol>
 <h2 id="visao-de-componentes-diagrama-de-componentes-uml">Visão de Componentes: Diagrama de Componentes UML</h2>
 <p><img alt="Diagrama de Componentes UML do portal" src="../../../assets/diagramas/componentes.png" /></p>
@@ -1023,21 +1019,21 @@
     </p>
 </figcaption>
 
-<p>Fonte editável: <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/docs/assets/diagramas/componentes.drawio"><code>componentes.drawio</code></a>.</p>
+<p>Fonte editável: <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/docs/assets/diagramas/componentes.drawio">componentes.drawio</a>.</p>
 <p><strong>Notação (slides 60 e 61 do PDF da aula):</strong></p>
 <ul>
-<li>cada componente é um retângulo com o estereótipo <code>«component»</code> e o ícone de componente;</li>
+<li>cada componente é um retângulo com o estereótipo «component» e o ícone de componente;</li>
 <li>a <strong>interface fornecida</strong> é a "bola" (○), do lado de quem a oferece;</li>
 <li>a <strong>interface requerida</strong> é o "soquete" (◡), do lado de quem precisa dela;</li>
 <li>quando os dois se encaixam, forma-se um <strong>conector de montagem</strong>.</li>
 </ul>
-<p>Em React, a interface fornecida por um componente é o <strong>tipo das suas props</strong> (ex.: <code>ISideBar { itemAtivo?, logado? }</code>), e a de um hook é o <strong>valor que ele devolve</strong> (ex.: <code>ISessao { logado, entrar, sair }</code>).</p>
+<p>Em React, a interface fornecida por um componente é o <strong>tipo das suas props</strong> (ex.: ISideBar { itemAtivo?, logado? }), e a de um hook é o <strong>valor que ele devolve</strong> (ex.: ISessao { logado, entrar, sair }).</p>
 <p><strong>Como o diagrama evidencia a reutilização:</strong></p>
 <ul>
-<li><strong>Um componente atende várias telas.</strong> O <code>AppLayout</code> é requerido uma única vez, pelo <code>RootLayout</code>, e o framework o aplica a todas as páginas.</li>
-<li><strong>Uma mesma lógica tem dois consumidores.</strong> O <code>useSessaoSimulada</code> fornece <code>ISessao</code> para a <code>SideBar</code> e para a <code>PaginaInicial</code>.</li>
-<li><strong>O framework também é um componente.</strong> O Next.js <strong>requer</strong> as interfaces <code>ILayout</code> e <code>IPagina</code>, que nós <strong>fornecemos</strong> (os <em>hot spots</em>, Princípio de Hollywood). Em troca, ele <strong>fornece</strong> <code>IRoteador</code> (<code>usePathname</code>, <code>Link</code>), que a <code>SideBar</code> requer para descobrir o item ativo.</li>
-<li><strong>Trocar uma implementação não afeta quem a usa.</strong> Quem requer <code>IRepositorioNoticias</code> (a Home) não sabe que, por trás, existe um Singleton com dados de exemplo. Trocar por uma API só mudaria o componente provedor.</li>
+<li><strong>Um componente atende várias telas.</strong> O AppLayout é requerido uma única vez, pelo RootLayout, e o framework o aplica a todas as páginas.</li>
+<li><strong>Uma mesma lógica tem dois consumidores.</strong> O useSessaoSimulada fornece ISessao para a SideBar e para a PaginaInicial.</li>
+<li><strong>O framework também é um componente.</strong> O Next.js <strong>requer</strong> as interfaces ILayout e IPagina, que nós <strong>fornecemos</strong> (os <em>hot spots</em>, Princípio de Hollywood). Em troca, ele <strong>fornece</strong> IRoteador (usePathname, Link), que a SideBar requer para descobrir o item ativo.</li>
+<li><strong>Trocar uma implementação não afeta quem a usa.</strong> Quem requer IRepositorioNoticias (a Home) não sabe que, por trás, existe um Singleton com dados de exemplo. Trocar por uma API só mudaria o componente provedor.</li>
 </ul>
 <h2 id="relacao-com-o-codigo">Relação com o Código</h2>
 <table>
@@ -1049,50 +1045,50 @@
 </thead>
 <tbody>
 <tr>
-<td>Pacote <code>app</code> · componentes <code>RootLayout</code>, <code>Home</code>, <code>PaginaInicial</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/layout.tsx"><code>app/layout.tsx</code></a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/page.tsx"><code>app/page.tsx</code></a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/_home/PaginaInicial.tsx"><code>app/_home/PaginaInicial.tsx</code></a></td>
+<td>Pacote app · componentes RootLayout, Home, PaginaInicial</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/layout.tsx">app/layout.tsx</a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/page.tsx">app/page.tsx</a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/app/_home/PaginaInicial.tsx">app/_home/PaginaInicial.tsx</a></td>
 </tr>
 <tr>
-<td><code>AppLayout</code> · <code>IAppLayout { children }</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/AppLayout/AppLayout.tsx"><code>components/AppLayout/AppLayout.tsx</code></a></td>
+<td children="children">AppLayout · IAppLayout</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/AppLayout/AppLayout.tsx">components/AppLayout/AppLayout.tsx</a></td>
 </tr>
 <tr>
-<td><code>SideBar</code> · <code>ISideBar</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/SideBar/SideBar.tsx"><code>components/SideBar/SideBar.tsx</code></a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/SideBar/itensMenu.ts"><code>itensMenu.ts</code></a></td>
+<td>SideBar · ISideBar</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/SideBar/SideBar.tsx">components/SideBar/SideBar.tsx</a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/SideBar/itensMenu.ts">itensMenu.ts</a></td>
 </tr>
 <tr>
-<td><code>CardEmAlta</code> · <code>ICardEmAlta</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/CardEmAlta/CardEmAlta.tsx"><code>components/CardEmAlta/CardEmAlta.tsx</code></a></td>
+<td>CardEmAlta · ICardEmAlta</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/CardEmAlta/CardEmAlta.tsx">components/CardEmAlta/CardEmAlta.tsx</a></td>
 </tr>
 <tr>
-<td><code>CardEvento</code> · <code>ICardEvento</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/CardEvento/CardEvento.tsx"><code>components/CardEvento/CardEvento.tsx</code></a></td>
+<td>CardEvento · ICardEvento</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/components/CardEvento/CardEvento.tsx">components/CardEvento/CardEvento.tsx</a></td>
 </tr>
 <tr>
-<td>Pacote <code>hooks</code> · <code>useSessaoSimulada</code> · <code>ISessao</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/hooks/useSessaoSimulada.ts"><code>hooks/useSessaoSimulada.ts</code></a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/lib/sessaoSimulada.ts"><code>lib/sessaoSimulada.ts</code></a></td>
+<td>Pacote hooks · useSessaoSimulada · ISessao</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/hooks/useSessaoSimulada.ts">hooks/useSessaoSimulada.ts</a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/lib/sessaoSimulada.ts">lib/sessaoSimulada.ts</a></td>
 </tr>
 <tr>
-<td>Pacote <code>lib</code> · <code>repositorioNoticias</code> · <code>IRepositorioNoticias</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/lib/repositorioNoticias.ts"><code>lib/repositorioNoticias.ts</code></a></td>
+<td>Pacote lib · repositorioNoticias · IRepositorioNoticias</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/lib/repositorioNoticias.ts">lib/repositorioNoticias.ts</a></td>
 </tr>
 <tr>
-<td>Pacotes <code>data</code> e <code>types</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/data/noticias.ts"><code>data/noticias.ts</code></a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/types/noticia.ts"><code>types/noticia.ts</code></a></td>
+<td>Pacotes data e types</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/data/noticias.ts">data/noticias.ts</a> · <a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/src/types/noticia.ts">types/noticia.ts</a></td>
 </tr>
 <tr>
-<td><code>Next.js / React</code> · <code>IRoteador</code></td>
-<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/package.json"><code>package.json</code></a> (Next.js 16, React 19)</td>
+<td>Next.js / React · IRoteador</td>
+<td><a href="https://github.com/UnBArqDsw2026-2-Turma01/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/blob/main/portal/package.json">package.json</a> (Next.js 16, React 19)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="uso-da-ia-generativa">Uso da IA Generativa</h2>
-<p>Usei o <strong>Claude Code</strong> para levantar as dependências entre pacotes (busca das linhas <code>import</code> em <code>portal/src</code>) e para gerar os arquivos <code>.drawio</code>. Validei cada seta abrindo os arquivos e cada imagem exportada visualmente. Correções de senso crítico:</p>
+<p>Usei o <strong>Claude Code</strong> para levantar as dependências entre pacotes (busca das linhas import em portal/src) e para gerar os arquivos .drawio. Validei cada seta abrindo os arquivos e cada imagem exportada visualmente. Correções de senso crítico:</p>
 <ul>
-<li><strong>Dependência falsa:</strong> a busca automática encontrou <code>lib → lib/repositorioNoticias</code>, mas era só um comentário dentro do próprio arquivo, não uma importação. A seta não entrou no diagrama.</li>
+<li><strong>Dependência falsa:</strong> a busca automática encontrou lib → lib/repositorioNoticias, mas era só um comentário dentro do próprio arquivo, não uma importação. A seta não entrou no diagrama.</li>
 <li><strong>Arquivos de teste:</strong> os testes importam pacotes que o código de produção não importa. Foram desconsiderados para o diagrama mostrar a arquitetura de quem roda no navegador.</li>
-<li><strong>Notação de interfaces:</strong> conferi um a um se a "bola" ficou no provedor e o "soquete" no consumidor (ex.: o <code>RootLayout</code> <strong>fornece</strong> <code>ILayout</code> e o Next.js <strong>requer</strong>, e não o contrário).</li>
-<li><strong>Diagrama do real, não do ideal:</strong> os pacotes vazios (<code>contexts</code>, <code>padroes</code>) e os componentes das outras vagas não foram desenhados como se já existissem. Ficaram tracejados ou citados em nota.</li>
+<li><strong>Notação de interfaces:</strong> conferi um a um se a "bola" ficou no provedor e o "soquete" no consumidor (ex.: o RootLayout <strong>fornece</strong> ILayout e o Next.js <strong>requer</strong>, e não o contrário).</li>
+<li><strong>Diagrama do real, não do ideal:</strong> os pacotes vazios (contexts, padroes) e os componentes das outras vagas não foram desenhados como se já existissem. Ficaram tracejados ou citados em nota.</li>
 </ul>
 <h2 id="versionamento">Versionamento</h2>
 <table>
