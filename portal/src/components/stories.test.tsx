@@ -3,9 +3,12 @@ import type { ComponentType } from "react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import * as agenda from "./AgendaEventos/AgendaEventos.stories";
 import * as badge from "./BadgeCategoria/BadgeCategoria.stories";
+import * as botaoAcao from "./BotaoAcao/BotaoAcao.stories";
 import * as botaoSeguir from "./BotaoSeguir/BotaoSeguir.stories";
+import * as campoFormulario from "./CampoFormulario/CampoFormulario.stories";
 import * as cardComunidade from "./CardComunidade/CardComunidade.stories";
 import * as paginaCategoria from "./PaginaCategoria/PaginaCategoria.stories";
+import * as paginaSugerir from "./PaginaSugerir/PaginaSugerir.stories";
 import * as postCard from "./PostCard/PostCard.stories";
 
 type Decorator = (Story: ComponentType) => React.ReactNode;
@@ -19,14 +22,14 @@ interface Meta extends Story {
   component: ComponentType<Record<string, unknown>>;
 }
 
-const modulos = { agenda, badge, botaoSeguir, cardComunidade, paginaCategoria, postCard };
+const modulos = { agenda, badge, botaoAcao, botaoSeguir, campoFormulario, cardComunidade, paginaCategoria, paginaSugerir, postCard };
 
 const casos = Object.values(modulos).flatMap((modulo) => {
   const { default: meta, ...stories } = modulo as unknown as { default: Meta } & Record<string, Story>;
   return Object.entries(stories).map(([nome, story]) => [`${meta.title}/${nome}`, meta, story] as const);
 });
 
-describe("stories da vaga 3", () => {
+describe("stories do portal", () => {
   beforeEach(() => window.localStorage.clear());
   afterEach(cleanup);
 

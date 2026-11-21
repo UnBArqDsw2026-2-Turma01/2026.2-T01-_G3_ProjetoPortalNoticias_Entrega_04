@@ -7,9 +7,9 @@ import { BarraBusca } from "@/components/BarraBusca";
 import { NotificationBell } from "@/components/NotificationBell";
 import { CardEmAlta } from "@/components/CardEmAlta";
 import { CardEvento, type Evento } from "@/components/CardEvento";
+import { PostCard } from "@/components/PostCard";
 import { caminhoPublico } from "@/lib/caminhos";
 import type { Noticia } from "@/types/noticia";
-import { Marcador } from "./Marcador";
 import { saudacaoPorHorario } from "./saudacao";
 import styles from "./PaginaInicial.module.css";
 
@@ -67,10 +67,7 @@ export function PaginaInicial({ destaque, ultimas, assuntosEmAlta, evento }: Pag
           />
 
           {destaque && (
-            // TODO vaga 3 (#3): trocar por <PostCard noticia={destaque} variante="destaque" />
-            <Marcador componente="PostCard (destaque)" href={`/noticia/${destaque.id}`}>
-              {destaque.titulo}
-            </Marcador>
+            <PostCard noticia={destaque} variante="destaque" />
           )}
 
           <section aria-labelledby="ultimas-noticias">
@@ -84,10 +81,7 @@ export function PaginaInicial({ destaque, ultimas, assuntosEmAlta, evento }: Pag
             <ul className={styles.ultimas}>
               {ultimas.map((noticia) => (
                 <li key={noticia.id}>
-                  {/* TODO vaga 3 (#3): trocar por <PostCard noticia={noticia} variante="compacto" /> */}
-                  <Marcador componente="PostCard" href={`/noticia/${noticia.id}`}>
-                    {noticia.titulo}
-                  </Marcador>
+                  <PostCard noticia={noticia} variante="compacto" />
                 </li>
               ))}
             </ul>

@@ -3,7 +3,21 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+.botaoSino {
+  display: flex;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cor-texto-sobre-fundo);
   cursor: pointer;
+}
+
+.botaoSino:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
 }
 
 .sino {

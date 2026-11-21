@@ -31,6 +31,15 @@ export function SideBar({ itemAtivo, logado, categoriasSeguidas }: SideBarProps)
   const ativo = itemAtivo ?? itemAtivoPelaRota(pathname);
   const estaLogado = logado ?? sessao.logado;
   const categorias = categoriasSeguidas ?? seguidas;
+  const categoriaAtiva = pathname.match(/^\/categoria\/([^/?]+)/)?.[1] as Categoria | undefined;
+  const categoriasVisiveis = categorias.slice(0, 3);
+  if (
+    categoriaAtiva &&
+    categorias.includes(categoriaAtiva) &&
+    !categoriasVisiveis.includes(categoriaAtiva)
+  ) {
+    categoriasVisiveis[categoriasVisiveis.length - 1] = categoriaAtiva;
+  }
 
   return (
     <aside className={styles.sidebar}>
@@ -66,7 +75,7 @@ export function SideBar({ itemAtivo, logado, categoriasSeguidas }: SideBarProps)
             Meus Conteúdos
           </h2>
           <ul className={styles.categorias}>
-            {categorias.map((categoria) => {
+            {categoriasVisiveis.map((categoria) => {
               const icone = ICONES_CATEGORIA[categoria];
               return (
                 <li key={categoria}>

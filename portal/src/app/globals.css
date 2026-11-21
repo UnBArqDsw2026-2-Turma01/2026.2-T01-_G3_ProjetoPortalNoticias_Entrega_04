@@ -40,6 +40,8 @@
   --cor-texto-banner: #ebe4db;
   --gradiente-banner: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.49) 57.792%);
   --cor-banner-explorar: #c5333e;
+  /* Banner de Sugerir Publicação: vermelho próprio do frame 142:1009 do Figma. */
+  --cor-banner-sugerir: #c5333e;
   --cor-fundo-ilustracao: #1b1c1e;
 
   /* Tipografia: Inter Semi Bold em todo o protótipo */
@@ -95,8 +97,8 @@ a {
 /* Barra de rolagem (vaga 3): fina, arredondada e salmão ao passar o mouse.
    Trilho transparente para combinar com o fundo claro e com a SideBar escura. */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 0;
+  height: 0;
 }
 
 ::-webkit-scrollbar-track {
@@ -126,21 +128,31 @@ img {
   max-width: 100%;
 }
 
-/* Preferências globais da vaga 6. Os cards permanecem claros no Figma DarkMode. */
+/* Preferencias globais da pagina de Acessibilidade. */
 :root {
   --cor-capa-perfil: #000000;
   --cor-texto-capa: #ffffff;
   --cor-banner-acessibilidade: #c5333e;
   --cor-texto-banner: #ebe4db;
   --cor-perfil-secundaria: #979797;
+  --inversao: 0;
+  --brilho: 1;
+  --saturacao: 0;
+  --cor-nivel-inativo: #d9d9d9;
+  --cor-guia-leitura: #ffff00;
 }
 
 :root[data-tema="escuro"] {
   --cor-perfil-secundaria: #ffffff;
 }
 
-:root[data-fonte="grande"] { --tamanho-fonte-base: 18px; }
-:root[data-fonte="muito-grande"] { --tamanho-fonte-base: 22px; }
+:root[data-fonte="grande"] {
+  --tamanho-fonte-base: 18px;
+}
+
+:root[data-fonte="muito-grande"] {
+  --tamanho-fonte-base: 22px;
+}
 
 :root[data-contraste="alto"] {
   --cor-fundo: #000000;
@@ -174,22 +186,34 @@ img {
 }
 
 :root[data-cursor="grande"],
-:root[data-cursor="grande"] * { cursor: var(--cursor-acessivel) !important; }
-
-:root {
-  --inversao: 0;
-  --brilho: 1;
-  --saturacao: 0;
-  --cor-nivel-inativo: #d9d9d9;
-  --cor-guia-leitura: #ffff00;
+:root[data-cursor="grande"] * {
+  cursor: var(--cursor-acessivel) !important;
 }
-:root[data-inversao="ativo"] { --inversao: 1; }
-:root[data-brilho="ativo"] { --brilho: .8; }
-:root[data-saturacao="ativo"] { --saturacao: 1; }
-:root[data-inversao="ativo"], :root[data-brilho="ativo"], :root[data-saturacao="ativo"] {
+
+:root[data-inversao="ativo"] {
+  --inversao: 1;
+}
+
+:root[data-brilho="ativo"] {
+  --brilho: 0.8;
+}
+
+:root[data-saturacao="ativo"] {
+  --saturacao: 1;
+}
+
+:root[data-inversao="ativo"],
+:root[data-brilho="ativo"],
+:root[data-saturacao="ativo"] {
   filter: invert(var(--inversao)) brightness(var(--brilho)) grayscale(var(--saturacao));
 }
-:root[data-links="ativo"] a { text-decoration: underline !important; outline: 2px solid currentColor; outline-offset: 2px; }
+
+:root[data-links="ativo"] a {
+  text-decoration: underline !important;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 :root[data-guia="ativo"]::after {
   content: "";
   position: fixed;
