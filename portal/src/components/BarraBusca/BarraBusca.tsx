@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { repositorioNoticias } from "@/lib/repositorioNoticias";
+import { caminhoPublico } from "@/lib/caminhos";
 import type { Noticia } from "@/types/noticia";
 import styles from "./BarraBusca.module.css";
 
@@ -90,10 +91,4 @@ export function BarraBusca({ placeholder, valorInicial }: BarraBuscaProps) {
       )}
     </div>
   );
-}
-
-function caminhoPublico(caminho: string): string {
-  if (/^(https?:)?\/\//.test(caminho)) return caminho;
-  const comBarra = caminho.startsWith("/") ? caminho : `/${caminho}`;
-  return comBarra;
 }

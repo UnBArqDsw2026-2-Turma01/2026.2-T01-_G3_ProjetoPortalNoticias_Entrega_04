@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AgendaEventos } from "@/components/AgendaEventos";
 import { BotaoSeguir } from "@/components/BotaoSeguir";
 import { PostCard } from "@/components/PostCard";
 import { caminhoPublico } from "@/lib/caminhos";
@@ -15,7 +16,9 @@ export interface PaginaCategoriaProps {
 export function PaginaCategoria({ fabrica }: PaginaCategoriaProps) {
   const tema = fabrica.criarTema();
   const apresentacao = fabrica.criarApresentacao();
-  const secao = fabrica.criarSecao().renderizar();
+  const secao = fabrica.criarSecao().renderizar({
+    eventos: (eventos) => <AgendaEventos eventos={eventos} />,
+  });
   const noticias = repositorioNoticias.listarPorCategoria(tema.categoria);
 
   return (

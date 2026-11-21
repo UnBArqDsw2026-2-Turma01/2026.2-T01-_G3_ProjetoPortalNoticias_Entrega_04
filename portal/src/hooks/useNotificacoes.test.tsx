@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { publicar } from "@/padroes/eventBus";
 import { useNotificacoes } from "./useNotificacoes";
 
@@ -43,4 +43,16 @@ describe("useNotificacoes", () => {
     expect(result.current.naoLidas).toBe(0);
     expect(result.current.notificacoes.every((n) => n.lida)).toBe(true);
   });
+});
+it("eventos no mesmo milissegundo geram notificações com identidades distintas", () => {
+  const agora = vi.spyOn(Date, "now").mockReturnValue(1234567890);
+  try {
+    const { result } = renderHook(() => useNotificacoes());
+    act(() => {
+      publicar("noticia-publicada", { titulo: "Primeira" });
+      publicar("sugestao-enviada", { titulo: "Segunda" });
+    });
+    expect(result.current.notificacoes).toHaveLength(5);
+    expect(new Set(result.current.notificacoes.map((n) => n.id)).size).toBe(5);
+  } finally { agora.mockRestore(); }
 });
