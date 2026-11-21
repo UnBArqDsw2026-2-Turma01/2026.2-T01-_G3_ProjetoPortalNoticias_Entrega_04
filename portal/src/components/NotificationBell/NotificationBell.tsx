@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useNotificacoes } from "@/hooks/useNotificacoes";
 import styles from "./NotificationBell.module.css";
 
@@ -9,6 +9,8 @@ import styles from "./NotificationBell.module.css";
 export function NotificationBell() {
   const { notificacoes, naoLidas, marcarComoLidas } = useNotificacoes();
   const [aberta, setAberta] = useState(false);
+  const listaId = useId();
+  const botaoRef = useRef<HTMLButtonElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const alternar = useCallback(() => setAberta((a) => !a), []);
@@ -19,7 +21,10 @@ export function NotificationBell() {
       if (!wrapperRef.current?.contains(evento.target as Node)) setAberta(false);
     };
     const fecharComEscape = (evento: KeyboardEvent) => {
-      if (evento.key === "Escape") setAberta(false);
+      if (evento.key === "Escape") {
+        setAberta(false);
+        botaoRef.current?.focus();
+      }
     };
     document.addEventListener("pointerdown", fecharAoClicarFora);
     document.addEventListener("keydown", fecharComEscape);
@@ -35,12 +40,13 @@ export function NotificationBell() {
       className={styles.wrapper}
     >
       <button
+        ref={botaoRef}
         type="button"
         className={styles.botaoSino}
         onClick={alternar}
         aria-label={naoLidas > 0 ? `Notificações, ${naoLidas} não lidas` : "Notificações"}
         aria-expanded={aberta}
-        aria-controls="lista-notificacoes"
+        aria-controls={aberta ? listaId : undefined}
       >
       <div className={styles.sino}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -54,7 +60,7 @@ export function NotificationBell() {
       </button>
 
       {aberta && (
-        <div className={styles.lista} id="lista-notificacoes" role="listbox" aria-label="Notificações">
+        <div className={styles.lista} id={listaId} role="region" aria-label="Notificações">
           {notificacoes.length === 0 ? (
             <p className={styles.vazio}>Sem notificações no momento.</p>
           ) : (

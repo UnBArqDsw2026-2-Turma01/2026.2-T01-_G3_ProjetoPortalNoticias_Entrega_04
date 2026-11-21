@@ -40,35 +40,33 @@ const NOTIFICACOES_INICIAIS: Notificacao[] = [
   },
 ];
 
+let sequencia = 0;
+function criarNotificacao(titulo: string): Notificacao {
+  return {
+    id: `evento-${++sequencia}`,
+    titulo,
+    lida: false,
+    publicadaEm: new Date().toISOString(),
+  };
+}
+
 export function useNotificacoes() {
   const [notificacoes, setNotificacoes] = useState<Notificacao[]>(NOTIFICACOES_INICIAIS);
 
   // Assina o eventBus quando monta, cancela no cleanup.
-  // O cancelamento é essencial: sem ele, cada render cria uma nova assinatura que
+  // O cancelamento é essencial: sem ele, cada nova montagem pode deixar uma assinatura que
   // nunca é removida, vazando memória e disparando callbacks em componentes desmontados.
   useEffect(() => {
     const cancelarNoticia = assinar("noticia-publicada", (dados: NoticiaPublicada) => {
-      setNotificacoes((atual) => [
-        {
-          id: `notif-${Date.now()}`,
-          titulo: dados.titulo ?? "Nova notícia publicada",
-          lida: false,
-          publicadaEm: new Date().toISOString(),
-        },
-        ...atual,
-      ]);
+      // Cria a identidade fora do updater, que deve permanecer puro no StrictMode.
+      const notificacao = criarNotificacao(dados.titulo ?? "Nova notícia publicada");
+      setNotificacoes((atual) => [notificacao, ...atual]);
     });
 
     const cancelarSugestao = assinar("sugestao-enviada", (dados: SugestaoEnviada) => {
-      setNotificacoes((atual) => [
-        {
-          id: `notif-${Date.now()}`,
-          titulo: dados.titulo ?? "Sua sugestão foi enviada",
-          lida: false,
-          publicadaEm: new Date().toISOString(),
-        },
-        ...atual,
-      ]);
+      // Cria a identidade fora do updater, que deve permanecer puro no StrictMode.
+      const notificacao = criarNotificacao(dados.titulo ?? "Sua sugestão foi enviada");
+      setNotificacoes((atual) => [notificacao, ...atual]);
     });
 
     return () => {
