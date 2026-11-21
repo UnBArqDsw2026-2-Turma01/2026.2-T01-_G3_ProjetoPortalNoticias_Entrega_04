@@ -7,6 +7,7 @@ import { BadgeCategoria } from "@/components/BadgeCategoria";
 import { BotaoAcao } from "@/components/BotaoAcao";
 import { DataPublicacao } from "@/components/DataPublicacao";
 import { IconeCompartilhar, IconeSalvar, IconeVoltar } from "@/components/IconesAcao";
+import { useSalvos } from "@/hooks/useSalvos";
 import { caminhoPublico } from "@/lib/caminhos";
 import { FabricaCategoria } from "@/padroes/fabricaCategorias";
 import type { Noticia } from "@/types/noticia";
@@ -20,7 +21,8 @@ export interface PaginaNoticiaProps {
 // esta parte é cliente só por causa das ações Voltar, Compartilhar e Salvar.
 export function PaginaNoticia({ noticia }: PaginaNoticiaProps) {
   const router = useRouter();
-  const [salvo, setSalvo] = useState(false);
+  const { estaSalvo, alternar } = useSalvos();
+  const salvo = estaSalvo(noticia.id);
   const [aviso, setAviso] = useState("");
   const tema = FabricaCategoria.para(noticia.categoria).criarTema();
 
@@ -53,9 +55,9 @@ export function PaginaNoticia({ noticia }: PaginaNoticiaProps) {
     }
   }
 
-  // A vaga 5 troca este estado local pelo useSalvos, que persiste no localStorage.
+  // useSalvos (vaga 5) persiste no localStorage, e a notícia aparece em /salvos.
   function alternarSalvo() {
-    setSalvo((valorAtual) => !valorAtual);
+    alternar(noticia.id);
     setAviso(salvo ? "Notícia removida dos salvos." : "Notícia salva.");
   }
 

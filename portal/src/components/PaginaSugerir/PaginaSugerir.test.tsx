@@ -21,7 +21,7 @@ describe("PaginaSugerir", () => {
     render(<PaginaSugerir />);
 
     preencher(titulo);
-    fireEvent.click(screen.getByRole("button", { name: "Enviar para revsão" }));
+    fireEvent.click(screen.getByRole("button", { name: "Enviar para revisão" }));
 
     expect(screen.getByText("Sugestão enviada para moderação")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: titulo })).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe("PaginaSugerir", () => {
   it("mostra o erro no campo de título quando o formulário está vazio", () => {
     render(<PaginaSugerir />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Enviar para revsão" }));
+    fireEvent.click(screen.getByRole("button", { name: "Enviar para revisão" }));
 
     expect(screen.getByRole("alert")).toHaveTextContent("Dê um título à sua publicação antes de enviar.");
     expect(screen.getByLabelText(/Título da Publicação/)).toHaveAttribute("aria-invalid", "true");
@@ -49,7 +49,7 @@ describe("PaginaSugerir", () => {
   it("limpa o erro do campo assim que o leitor começa a corrigir", () => {
     render(<PaginaSugerir />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Enviar para revsão" }));
+    fireEvent.click(screen.getByRole("button", { name: "Enviar para revisão" }));
     fireEvent.change(screen.getByLabelText(/Título da Publicação/), { target: { value: "Uma notícia" } });
 
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
@@ -59,7 +59,7 @@ describe("PaginaSugerir", () => {
     render(<PaginaSugerir />);
 
     preencher("Segunda sugestão da mesma sessão");
-    fireEvent.click(screen.getByRole("button", { name: "Enviar para revsão" }));
+    fireEvent.click(screen.getByRole("button", { name: "Enviar para revisão" }));
     fireEvent.click(screen.getByRole("button", { name: "Enviar outra sugestão" }));
 
     expect(screen.queryByText("Sugestão enviada para moderação")).not.toBeInTheDocument();

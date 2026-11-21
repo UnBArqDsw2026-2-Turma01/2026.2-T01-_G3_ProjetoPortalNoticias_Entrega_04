@@ -262,7 +262,7 @@ export function PaginaSugerir() {
               </button>
               <BotaoAcao
                 type="submit"
-                rotulo="Enviar para revsão"
+                rotulo="Enviar para revisão"
                 variante="primario"
                 icone={<IconeEnviar />}
               />

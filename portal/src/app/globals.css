@@ -97,8 +97,8 @@ a {
 /* Barra de rolagem (vaga 3): fina, arredondada e salmão ao passar o mouse.
    Trilho transparente para combinar com o fundo claro e com a SideBar escura. */
 ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
