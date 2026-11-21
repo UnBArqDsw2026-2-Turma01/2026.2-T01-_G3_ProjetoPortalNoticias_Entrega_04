@@ -51,6 +51,13 @@ describe("PostCard", () => {
     expect(screen.getByRole("button", { name: "Salvar" })).toBeInTheDocument();
   });
 
+  it("sem href, mostra o título sem link (prévia da sugestão)", () => {
+    render(<PostCard noticia={noticia} href={null} />);
+
+    expect(screen.getByText(noticia.titulo)).toBeInTheDocument();
+    expect(screen.queryByRole("link")).not.toBeInTheDocument();
+  });
+
   it("marca a data de publicação em um <time> legível por máquina", () => {
     const { container } = render(<PostCard noticia={noticia} />);
     expect(container.querySelector("time")).toHaveAttribute("datetime", noticia.publicadaEm);

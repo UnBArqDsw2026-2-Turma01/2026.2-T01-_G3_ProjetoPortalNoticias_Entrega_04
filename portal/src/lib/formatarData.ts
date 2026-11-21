@@ -8,11 +8,32 @@ const partesDaData = new Intl.DateTimeFormat("pt-BR", {
   month: "numeric",
 });
 
+const formatoHora = new Intl.DateTimeFormat("pt-BR", {
+  timeZone: "America/Sao_Paulo",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+const formatoDia = new Intl.DateTimeFormat("pt-BR", {
+  timeZone: "America/Sao_Paulo",
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
+
 export function formatarDataCurta(iso: string): string {
   const partes = partesDaData.formatToParts(new Date(iso));
   const dia = Number(partes.find((p) => p.type === "day")?.value);
   const mes = Number(partes.find((p) => p.type === "month")?.value);
   return `${dia} de ${MESES[mes - 1]}`;
+}
+
+/** Data da página de notícia, como no Figma: "Hoje, 09:42" ou "18 de nov, 16:20". */
+export function formatarDataHora(iso: string, agora: Date = new Date()): string {
+  const data = new Date(iso);
+  const hora = formatoHora.format(data);
+  const mesmoDia = formatoDia.format(data) === formatoDia.format(agora);
+  return mesmoDia ? `Hoje, ${hora}` : `${formatarDataCurta(iso)}, ${hora}`;
 }
 
 export function formatarTempoRelativo(iso: string, agora: Date = new Date()): string {
