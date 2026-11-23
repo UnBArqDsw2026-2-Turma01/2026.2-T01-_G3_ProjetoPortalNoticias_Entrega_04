@@ -1,37 +1,88 @@
-** Projetos - Período   2026.2
+# Burburinho
 
-Segue a lista de projetos desse período letivo:
+O **Burburinho** é um portal de notícias criado pelo Grupo 3 para a disciplina
+Arquitetura e Desenho de Software. A plataforma reúne notícias de atualidade,
+conteúdo produzido pela comunidade e assuntos locais em uma experiência simples,
+responsiva e acessível.
 
-    • G1 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G1 - Comércio Eletrônico, com ênfase em Design Centrado no Usuário e Usabilidade/Experiência de Usuário, baseado em qualquer comércio eletrônico para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G1_ProjetoComercioEletronico mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
+O projeto aplica conceitos de reutilização em componentes React e demonstra padrões
+de projeto GoF no portal e em seu desenvolvimento. A documentação desta entrega
+inclui os elementos do DAS, os padrões reutilizados e as iniciativas extras do grupo.
 
-    • G2 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G2 - Fórum, com ênfase em Design Centrado no Usuário e Usabilidade/Experiência de Usuário, baseado em qualquer fórum para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G2_ProjetoForum mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
+## Como funciona
 
-    • G3 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G3 - Portal de Notícias, com ênfase em Atualidade e Conteúdo UGC (User-Generated Content), baseado em qualquer portal de notícias para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G3_ProjetoPortalNoticias mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
+Na página inicial, o usuário encontra uma notícia em destaque, as últimas
+publicações e assuntos em alta. O portal oferece navegação por categorias, páginas
+de leitura de notícias e uma área para explorar comunidades de interesse.
 
-    • G4 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G4 - Jogo, com ênfase em Jogabilidade e Usabilidade/Experiência de Usuário, baseado em qualquer jogo para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G4_ProjetoJogo mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
-    
-    • G5 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G5 - Governo Eletrônico, com ênfase em Privacidade de Dados e Usabilidade/Experiência de Usuário, baseado em qualquer Governo Eletrônico para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G5_ProjetoGovernoEletronico mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
+As principais experiências disponíveis atualmente são:
 
-    • G6 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G6 - Aplicativo Móvel, com ênfase em Responsividade e Usabilidade/Experiência de Usuário, baseado em qualquer aplicativo móvel para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G6_ProjetoAplicativoMovel mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
+- visualizar a página inicial, com notícia de destaque e últimas notícias;
+- explorar categorias como esporte, cultura, política e tecnologia;
+- abrir uma notícia e consultar seu conteúdo;
+- consultar os assuntos em alta e eventos exibidos na plataforma;
+- explorar os conteúdos disponíveis por categoria;
+- usar o menu lateral e seguir categorias;
+- simular entrada e saída de uma sessão no navegador;
+- alternar entre os temas claro e escuro;
+- acessar o painel de acessibilidade;
+- enviar uma sugestão de publicação pelo formulário UGC.
 
-    • G7 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G7 - Streaming de Vídeo, com ênfase em Transmissões ao Vivo e Conteúdo UGC (User-Generated Content), baseado em qualquer streaming de vídeo para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G7_ProjetoStreamingVideo mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
+O conteúdo exibido é formado por dados de exemplo. O protótipo utiliza um
+repositório em memória como única fonte de notícias, seguindo o padrão Singleton.
+Não existe uma API ou banco de dados integrado nesta entrega.
 
-    • G8 até 10 membros (organizado em 3 subgrupos)
-    • Projeto G8 - Aprendizado Eletrônico, com ênfase em Design Centrado no Usuário e Aprendizagens Significativa e Experiencial, baseado em qualquer Aprendizado Eletrônico para inspiração, podendo ser em versão site, desktop ou aplicativo móvel.
-    • Não usar o nome real da fonte de inspiração. A ideia é usar o nome G8_ProjetoAprendizadoEletronico mesmo, e apenas se basear em algo conhecido para fins de identificar público-alvo, principais funcionalidades, dentre outros detalhes.
-    
-OBS: Se a turma se mantiver com 60 alunos, devem ser mantidos 6 grupos de 10 membros. Caso outros alunos sejam matriculados, ultrapassando 60 alunos, têm-se o uso de mais dois grupos, totalizando 8 grupos com até 10 alunos cada = 80 alunos. Caso existam novos matriculados na disciplina, acima de 80 alunos, novos projetos serão propostos pela professora. Portanto, nesses casos, conversar com a professora na época.
+Por isso, o **login é apenas uma sessão simulada**, salva no navegador, e uma
+notícia sugerida fica pendente de moderação somente enquanto a instância da página
+permanece ativa. Ao recarregar, a sugestão é perdida. O envio não publica conteúdo
+imediatamente e o upload do formulário ainda não transmite arquivos.
+
+O portal é um export estático feito com Next.js. Recursos exclusivos de servidor,
+como APIs, Server Actions, cookies e autenticação real, não são usados nesta versão.
+
+## Versão publicada
+
+A documentação em MkDocs está disponível em:
+
+<https://unbarqdsw2026-2-turma01.github.io/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/>
+
+O protótipo do portal publicado em versão estática está em:
+
+<https://unbarqdsw2026-2-turma01.github.io/2026.2-T01-_G3_ProjetoPortalNoticias_Entrega_04/portal/>
+
+## Executando o portal localmente
+
+O portal requer **Node.js 20 ou superior**.
+
+Na raiz deste repositório, execute:
+
+```shell
+cd portal
+npm install
+npm run dev
+```
+
+A aplicação ficará disponível em `http://localhost:3000`.
+
+Comandos úteis:
+
+```shell
+npm test       # executa os testes
+npm run lint   # verifica padrões de código
+npm run build  # gera o export estático em portal/out
+```
+
+## Executando esta documentação localmente
+
+É recomendado criar e ativar um ambiente virtual Python antes da instalação.
+
+```shell
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+# No Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
+mkdocs serve
+```
+
+A documentação ficará disponível em `http://127.0.0.1:8000`.
