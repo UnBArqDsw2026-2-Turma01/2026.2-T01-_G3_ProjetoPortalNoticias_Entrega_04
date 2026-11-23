@@ -75,3 +75,18 @@ describe("cabeçalhos que quebram linha no celular", () => {
     },
   );
 });
+
+describe("camadas da barra fixa no topo (celular)", () => {
+  // Abaixo de 900px a SideBar vira uma barra fixa no topo; o conteúdo rola por baixo dela.
+  const zIndices = (arquivo: string) => [...ler(arquivo).matchAll(/z-index:\s*(\d+)/g)].map((m) => Number(m[1]));
+  const barra = Math.max(...zIndices("components/AppLayout/AppLayout.module.css"));
+
+  it("fica acima da BarraBusca e da lista do sino", () => {
+    expect(barra).toBeGreaterThan(Math.max(...zIndices("components/BarraBusca/BarraBusca.module.css").filter((z) => z < 100)));
+    expect(barra).toBeGreaterThan(Math.max(...zIndices("components/NotificationBell/NotificationBell.module.css")));
+  });
+
+  it("fica abaixo do modal de edição de perfil, que cobre a tela inteira", () => {
+    expect(barra).toBeLessThan(Math.max(...zIndices("app/perfil/page.module.css")));
+  });
+});
