@@ -42,7 +42,7 @@
 /* ---------- primario: Enviar ---------- */
 
 .primario {
-  min-height: 40px;
+  min-height: max(40px, var(--alvo-toque-minimo));
   padding: 0 26px;
   background: var(--cor-primaria);
   color: var(--cor-sobre-primaria);
@@ -52,7 +52,7 @@
 /* ---------- secundario: contorno ---------- */
 
 .secundario {
-  min-height: 40px;
+  min-height: max(40px, var(--alvo-toque-minimo));
   padding: 0 26px;
   border: 1px solid var(--cor-primaria);
   color: var(--cor-primaria);

@@ -232,6 +232,7 @@
 
   .item {
     gap: 8px;
+    height: max(40px, var(--alvo-toque-minimo));
     padding: 0 12px;
   }
 

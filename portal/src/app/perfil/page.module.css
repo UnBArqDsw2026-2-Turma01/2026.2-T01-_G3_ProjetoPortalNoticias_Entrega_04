@@ -12,6 +12,9 @@
 }
 
 .voltar {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque-minimo);
   font-size: 0.875rem;
 }
 
@@ -152,7 +155,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
+  min-height: max(36px, var(--alvo-toque-minimo));
   padding: 0 16px;
   border-radius: var(--raio-badge);
   background: var(--cor-primaria);
@@ -190,7 +193,7 @@
 
 .dicaFoto {
   color: var(--cor-texto-apagado);
-  font-size: 0.6875rem;
+  font-size: max(0.6875rem, var(--fonte-minima));
 }
 
 .campo {

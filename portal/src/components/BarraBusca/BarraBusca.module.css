@@ -16,13 +16,14 @@
 .input {
   flex: 1;
   min-width: 0;
+  min-height: var(--alvo-toque-minimo);
   padding: 8px 12px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-badge);
   background: var(--cor-superficie);
   color: var(--cor-texto);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: max(0.875rem, var(--fonte-minima-campo));
 }
 
 .input:focus {

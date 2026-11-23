@@ -57,6 +57,27 @@
   --raio-badge: 8px;
   --sombra-card: 0 4px 4px rgba(0, 0, 0, 0.25);
   --largura-sidebar: 342px;
+
+  /* Responsividade no celular (vaga 8). No desktop os valores são neutros e o layout do Figma não muda. */
+  --alvo-toque-minimo: 0px;
+  --fonte-minima: 0rem;
+  --fonte-minima-campo: 0rem;
+}
+
+/*
+ * Abaixo de 600px os mesmos tokens ganham valor, e todo componente que os usa passa a respeitar:
+ * - alvo de toque de 44 x 44 px (WCAG 2.5.5 e Apple Human Interface Guidelines);
+ * - fonte mínima de 12px para textos de apoio (selos, metadados, dicas);
+ * - 16px nos campos de texto, para o Safari do iPhone não dar zoom ao focar o campo.
+ * Os componentes usam max(medida do Figma, token): no desktop vale o Figma; no celular, o maior dos dois.
+ * As medidas em rem acompanham o tamanho de fonte escolhido na página de Acessibilidade.
+ */
+@media (max-width: 600px) {
+  :root {
+    --alvo-toque-minimo: 44px;
+    --fonte-minima: 0.75rem;
+    --fonte-minima-campo: 1rem;
+  }
 }
 
 /*

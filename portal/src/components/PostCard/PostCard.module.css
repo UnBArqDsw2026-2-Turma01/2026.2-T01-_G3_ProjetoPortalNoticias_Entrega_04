@@ -115,6 +115,10 @@
 }
 
 .botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--alvo-toque-minimo);
   flex-shrink: 0;
   margin-left: auto;
   border-radius: 9px;
@@ -213,7 +217,7 @@
 
 .compacto .nomeAutor,
 .compacto .tempo {
-  font-size: 0.625rem;
+  font-size: max(0.625rem, var(--fonte-minima));
 }
 
 /* ---------- horizontal (410 x 137) ---------- */

@@ -53,4 +53,15 @@
   .pagina {
     padding: 24px 16px 40px;
   }
+
+  /* Título longo ("Resultados para ...") e contagem não cabem lado a lado em 320px. */
+  .cabecalho {
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .titulo {
+    font-size: 1.75rem;
+    overflow-wrap: anywhere;
+  }
 }
