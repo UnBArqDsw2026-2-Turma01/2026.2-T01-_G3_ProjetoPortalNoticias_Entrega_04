@@ -27,6 +27,7 @@
 
 .assunto {
   display: flex;
+  min-height: var(--alvo-toque-minimo);
   align-items: center;
   gap: 18px;
   color: inherit;

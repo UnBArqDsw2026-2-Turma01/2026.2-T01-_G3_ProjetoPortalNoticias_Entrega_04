@@ -18,14 +18,14 @@
 
 .entrada {
   width: 100%;
-  min-height: 32px;
+  min-height: max(32px, var(--alvo-toque-minimo));
   padding: 7px 12px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-pequeno);
   background: var(--cor-fundo);
   color: var(--cor-texto-sobre-fundo);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: max(0.875rem, var(--fonte-minima-campo));
   font-weight: 400;
 }
 

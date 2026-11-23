@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 8px;
   min-width: 133px;
-  min-height: 33px;
+  min-height: max(33px, var(--alvo-toque-minimo));
   padding: 0 16px;
   border: 1px solid var(--cor-primaria);
   border-radius: 11px;

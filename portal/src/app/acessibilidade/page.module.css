@@ -11,7 +11,7 @@
 .ilustracao { margin-top: 5.45375rem; }
 .ilustracao img { height: auto; }
 .banner h1 { font: 400 min(6.5796875rem, 9.5879cqw) / normal var(--fonte-league-gothic), sans-serif; }
-.banner h1 span { display: block; font: 600 min(2.281625rem, 3.3248cqw) / normal var(--fonte-base); }
+.banner h1 span { display: block; font: 600 max(var(--fonte-minima), min(2.281625rem, 3.3248cqw)) / normal var(--fonte-base); }
 .conteudo { padding: 1.125rem 4rem 12.5rem; }
 .conteudo section + section { margin-top: 5.125rem; }
 .conteudo h2 { font-size: 1.25rem; margin-bottom: 1.625rem; }

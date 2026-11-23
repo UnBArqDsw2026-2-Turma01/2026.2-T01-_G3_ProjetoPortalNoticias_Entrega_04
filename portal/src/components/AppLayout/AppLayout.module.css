@@ -22,8 +22,11 @@
     grid-template-rows: auto 1fr;
   }
 
+  /* Barra fixa no topo: precisa ficar acima de tudo que rola por baixo dela.
+     Camadas do conteúdo: cards (1 e 2), BarraBusca (10) e lista do sino (50).
+     Fica abaixo só do modal de edição de perfil (100), que deve cobrir a tela inteira. */
   .lateral {
     height: auto;
-    z-index: 10;
+    z-index: 60;
   }
 }

@@ -51,7 +51,7 @@
   align-items: center;
   gap: 5px;
   color: var(--cor-texto-apagado);
-  font-size: 0.625rem; /* 10px */
+  font-size: max(0.625rem, var(--fonte-minima)); /* 10px; 12px no celular */
 }
 
 .ponto {
@@ -62,13 +62,14 @@
 }
 
 .ha {
-  font-size: 0.52rem; /* ~8.4px */
+  font-size: max(0.52rem, var(--fonte-minima)); /* ~8.4px; 12px no celular */
 }
 
 .verTodos {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: var(--alvo-toque-minimo);
   margin-top: 30px;
   padding-top: 14px;
   border-top: 1px solid var(--cor-borda);

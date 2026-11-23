@@ -162,7 +162,7 @@
 
 .uploadDetalhes {
   color: var(--cor-texto-apagado);
-  font-size: 0.625rem;
+  font-size: max(0.625rem, var(--fonte-minima));
   font-weight: 400;
 }
 
@@ -170,7 +170,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.625rem;
+  min-height: var(--alvo-toque-minimo);
+  font-size: max(0.625rem, var(--fonte-minima));
   font-weight: 600;
 }
 
@@ -190,6 +191,7 @@
   color: var(--cor-primaria);
   border: 0;
   background: transparent;
+  min-height: var(--alvo-toque-minimo);
   font: inherit;
   font-size: 1.106rem;
   cursor: pointer;
@@ -311,6 +313,13 @@
 
   .rotuloEtapa {
     display: none;
+  }
+
+  /* Caixa de confirmação maior para o dedo (o rótulo inteiro também marca a caixa). */
+  .confirmacao input {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
   }
 
   .etapa:not(:last-child)::after {
