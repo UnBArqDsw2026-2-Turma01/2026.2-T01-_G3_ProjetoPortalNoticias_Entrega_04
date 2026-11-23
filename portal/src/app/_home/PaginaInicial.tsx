@@ -46,7 +46,11 @@ export function PaginaInicial({ destaque, ultimas, assuntosEmAlta, evento }: Pag
             <>
               <NotificationBell />
               <Link href="/perfil" className={styles.avatar} aria-label="Meu perfil">
-                <svg width="60" height="60" viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="var(--cor-texto-apagado)" /><circle cx="42.5" cy="32" r="13" fill="var(--cor-fundo)" /><path d="M20 68c0-22 45-22 45 0Z" fill="var(--cor-fundo)" /></svg>
+                {usuario?.foto ? (
+                  <Image src={usuario.foto} alt="" width={60} height={60} />
+                ) : (
+                  <svg width="60" height="60" viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="var(--cor-texto-apagado)" /><circle cx="42.5" cy="32" r="13" fill="var(--cor-fundo)" /><path d="M20 68c0-22 45-22 45 0Z" fill="var(--cor-fundo)" /></svg>
+                )}
               </Link>
               <button type="button" className={styles.botaoSair} onClick={sair}>
                 Sair

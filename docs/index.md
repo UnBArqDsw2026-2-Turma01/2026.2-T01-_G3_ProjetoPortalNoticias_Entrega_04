@@ -31,7 +31,7 @@ Este projeto foi desenvolvido para a disciplina **Arquitetura e Desenho de Softw
       <a href="https://github.com/giovannabrito19">giovannabrito19</a>
     </td>
     <td align="center">
-      <img src="https://github.com/giovannafg.png" height="150" style="border-radius:50%;" alt="Giovanna Felipe"/><br>
+      <img src="https://github.com/giovannafg.png" width="150" height="150" style="border-radius:50%;" alt="Giovanna Felipe"/><br>
       <b>Giovanna Felipe</b><br>
       <a href="https://github.com/giovannafg">giovannafg</a>
     </td>
