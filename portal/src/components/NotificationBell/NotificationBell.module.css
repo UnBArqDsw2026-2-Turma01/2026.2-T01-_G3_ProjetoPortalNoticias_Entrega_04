@@ -11,7 +11,10 @@
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--cor-texto-sobre-fundo);
+  /* O círculo do sino é uma superfície clara nos dois temas, então o ícone usa a cor
+     de texto de superfície. --cor-texto-sobre-fundo vira branco no tema escuro e o
+     sino sumiria sobre o círculo claro. */
+  color: var(--cor-texto);
   cursor: pointer;
 }
 
