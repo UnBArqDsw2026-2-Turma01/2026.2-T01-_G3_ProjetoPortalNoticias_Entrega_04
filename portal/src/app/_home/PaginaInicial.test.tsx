@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { definirLogado } from "@/lib/sessaoSimulada";
+import { definirLogado, salvarPerfil } from "@/lib/sessaoSimulada";
 import { repositorioNoticias } from "@/lib/repositorioNoticias";
 import { PaginaInicial } from "./PaginaInicial";
 import { saudacaoPorHorario } from "./saudacao";
@@ -47,6 +47,19 @@ describe("Home (PaginaInicial)", () => {
     expect(screen.queryByRole("button", { name: "Entrar" })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "A5" })).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "A6" })).not.toBeInTheDocument();
+  });
+
+  it("usa o nome e a foto salvos no perfil", () => {
+    act(() => {
+      definirLogado(true);
+      salvarPerfil({ nome: "Luis Felipe", foto: "data:image/webp;base64,abc" });
+    });
+    renderizarHome();
+
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Luis Felipe");
+    expect(
+      screen.getByRole("link", { name: "Meu perfil" }).querySelector("img"),
+    ).toBeInTheDocument();
   });
 
   it("o botão Entrar alterna para o estado logado, e Sair volta", () => {

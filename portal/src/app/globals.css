@@ -22,6 +22,7 @@
   --cor-borda: #979797;
   --cor-primaria: var(--marca-salmon); /* botões, item ativo do menu, links "Ver todas" */
   --cor-sobre-primaria: #ffffff;
+  --cor-sobreposicao: rgba(0, 0, 0, 0.55); /* fundo atrás de modais (edição de perfil) */
 
   /* SideBar: escura nos dois temas, como no Figma */
   --cor-sidebar: #1b1c1e;
